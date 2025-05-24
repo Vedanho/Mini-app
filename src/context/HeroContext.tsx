@@ -10,7 +10,7 @@ interface HeroContextType {
 const HeroContext = createContext<HeroContextType | null>(null);
 
 export const HeroProvider = ({ children }: { children: ReactNode }) => {
-  const [hero, setHero] = useState<Hero | null>("konek");
+  const [hero, setHero] = useState<Hero | null>(null);
 
   return <HeroContext.Provider value={{ hero: hero!, setHero }}>{children}</HeroContext.Provider>;
 };
