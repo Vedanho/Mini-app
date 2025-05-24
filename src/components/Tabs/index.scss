@@ -1,0 +1,25 @@
+@use "styles/mixins.scss" as *;
+@use "styles/fonts.scss" as *;
+
+.tabs {
+  @include flex(space-between, center);
+  height: 44px;
+  border-radius: 12px;
+  border-bottom: 3px solid var(--color-medium);
+  background-color: var(--color-white);
+  overflow: hidden;
+
+  &__tab {
+    @include text-medium();
+
+    color: var(--color-orange);
+    font-weight: 600;
+    white-space: nowrap;
+    border-radius: unset;
+
+    &--active {
+      color: var(--color-red);
+      font-weight: 700;
+    }
+  }
+}

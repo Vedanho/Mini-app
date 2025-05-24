@@ -1,0 +1,19 @@
+.button {
+  width: 100%;
+  border-radius: 12px;
+  padding: 10px 12px;
+
+  &--white {
+    background-color: var(--color-white);
+    color: var(--color-orange);
+    border: unset;
+    border-bottom: 3px solid var(--color-medium);
+  }
+
+  &--orange {
+    background-color: var(--color-orange);
+    color: var(--color-white);
+    border: unset;
+    border-bottom: 3px solid var(--color-brown);
+  }
+}

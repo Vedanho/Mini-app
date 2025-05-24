@@ -1,0 +1,190 @@
+@use "styles/mixins.scss" as *;
+@use "styles/fonts.scss" as *;
+
+.hero-items {
+  @include flex(start, start, column, 12px);
+
+  margin-top: 14px;
+  padding: 5px 21px;
+  max-height: calc(100vh - 210px);
+  overflow: scroll;
+
+  &__item {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 25px;
+  }
+
+  &__item-info {
+    flex: 1;
+    display: grid;
+    column-gap: 6px;
+    grid-template-areas:
+      "money money"
+      "brilliant potion"
+      "button button";
+  }
+
+  &__points {
+    @include flex(flex-end, center);
+    @include text-tiny();
+
+    height: 31px;
+    max-width: 100px;
+    position: relative;
+    padding-right: 9px;
+    background-color: var(--color-white);
+    border-radius: 21px;
+    border-bottom: 3px solid var(--color-medium);
+    font-weight: 700;
+
+    img {
+      position: absolute;
+      object-fit: contain;
+    }
+
+    &--money {
+      grid-area: money;
+    }
+    &--brilliant {
+      margin-top: 16px;
+      grid-area: brilliant;
+    }
+    &--potion {
+      margin-top: 16px;
+      grid-area: potion;
+    }
+  }
+
+  &__btn {
+    @include text-tiny();
+
+    margin-top: 10px;
+    grid-area: button;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  &__money-icon {
+    left: -8px;
+  }
+
+  &__brilliant-icon {
+    width: 40px;
+    height: 40px;
+    left: -10px;
+  }
+
+  &__potion-icon {
+    left: -5px;
+    top: -12px;
+  }
+
+  &__img-wrapp {
+    position: relative;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: relative;
+    z-index: 100;
+  }
+
+  &__img-ellipse {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__level {
+    @include flex(center, center);
+    @include text-tiny();
+
+    width: 26px;
+    height: 26px;
+    top: 0;
+    position: absolute;
+    border: 1px solid var(--color-black);
+    background-color: var(--color-white);
+    border-radius: 50%;
+    box-shadow: 0px 2.46px 0px 0px #9c9c9c;
+    z-index: 100;
+    font-weight: 600;
+
+    span {
+      font-size: 6px;
+    }
+  }
+}
+
+.points-info {
+  flex: 1;
+  display: grid;
+  column-gap: 6px;
+  grid-template-areas:
+    "money money"
+    "brilliant potion"
+    "button button";
+
+  &__item {
+    @include flex(flex-end, center);
+    @include text-tiny();
+
+    height: 31px;
+    max-width: 100px;
+    position: relative;
+    padding-right: 9px;
+    background-color: var(--color-white);
+    border-radius: 21px;
+    border-bottom: 3px solid var(--color-medium);
+    font-weight: 700;
+
+    img {
+      position: absolute;
+      object-fit: contain;
+    }
+
+    &--money {
+      grid-area: money;
+    }
+    &--brilliant {
+      margin-top: 16px;
+      grid-area: brilliant;
+    }
+    &--potion {
+      margin-top: 16px;
+      grid-area: potion;
+    }
+  }
+
+  &__btn {
+    @include text-tiny();
+
+    max-height: 30px;
+    padding: 5px 12px;
+    margin-top: 10px;
+    grid-area: button;
+    font-weight: 600;
+    white-space: nowrap;
+    border-radius: 6px
+  }
+
+  &__money-icon {
+    left: -8px;
+  }
+
+  &__brilliant-icon {
+    width: 40px;
+    height: 40px;
+    left: -10px;
+  }
+
+  &__potion-icon {
+    left: -5px;
+    top: -12px;
+  }
+}

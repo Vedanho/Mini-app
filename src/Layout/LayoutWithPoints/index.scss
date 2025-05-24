@@ -1,0 +1,33 @@
+@use "styles/mixins.scss" as *;
+@use "styles/fonts.scss" as *;
+
+.points-layout {
+  @include flex(end, center);
+  padding-top: 7px;
+
+  &__logo {
+    width: 54px;
+    height: 47px;
+    margin-right: 38px;
+  }
+
+  &__points-wrapp {
+    @include flex(center, center, row, 17px);
+  }
+
+  &__points-block {
+    @include flex(center, center, column, 5px);
+  }
+
+  &__points-img {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+  }
+
+  &__points-count {
+    @include text-tiny();
+
+    font-weight: 600;
+  }
+}

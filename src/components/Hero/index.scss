@@ -1,0 +1,11 @@
+@use "styles/mixins.scss" as *;
+
+.hero {
+  &__img-wrapp {
+    @include flex(center, center);
+  }
+
+  &__img {
+    height: 100%;
+  }
+}

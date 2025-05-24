@@ -1,0 +1,33 @@
+@use "styles/mixins.scss" as *;
+@use "styles/fonts.scss" as *;
+
+.loading-screen {
+  @include flex(center, end);
+  
+  height: 100vh;
+  width: 100%;
+  background-image: url("/common/loading-screen.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+  &__loader {
+    @include loader();
+
+    border-color: var(--color-white);
+    border-top-color: transparent;
+  }
+
+  &__loader-block {
+    @include flex(center, center, column);
+
+    margin-bottom: 53px;
+  }
+
+  &__text {
+    @include text-big();
+
+    margin-top: 7px;
+    color: var(--color-white);
+    font-weight: 500;
+  }
+}

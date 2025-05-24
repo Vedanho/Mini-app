@@ -1,0 +1,44 @@
+@use "styles/mixins.scss" as *;
+@use "styles/fonts.scss" as *;
+
+.products {
+  @include flex(start, start, column, 30px);
+
+  margin-top: 22px;
+  max-height: calc(100vh - 250px);
+  padding: 5px 17px;
+  overflow: scroll;
+
+  &__item {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 25px;
+  }
+
+  &__img-wrapp {
+    @include flex(center, center);
+
+    width: 153px;
+    height: 153px;
+    background-color: var(--color-white);
+    border-bottom: 3px solid var(--color-medium);
+    border-radius: 50%;
+  }
+}
+
+.products .points-info {
+  grid-template-areas:
+    "label label"
+    "money money"
+    "brilliant potion"
+    "button button";
+}
+
+.points-info__label {
+  @include text-smallest();
+
+  grid-area: label;
+  font-weight: 700;
+  margin-bottom: 7px;
+}

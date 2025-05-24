@@ -1,0 +1,38 @@
+@use "styles/mixins.scss" as *;
+@use "styles/fonts.scss" as *;
+
+.navigation {
+  @include flex(space-between, center);
+
+  position: fixed;
+  bottom: 10px;
+  left: 16px;
+  right: 16px;
+  padding: 8px 20px;
+  background-color: var(--color-white);
+  border-radius: 12px;
+  border-bottom: 3px solid var(--color-medium);
+
+  &__item {
+    @include flex(start, center, column, 8px);
+  }
+
+  &__icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  &__item-label {
+    @include text-small();
+
+    color: var(--color-orange);
+  }
+}
+
+.navigation__item--active .navigation__item-label {
+  color: var(--color-red);
+}
+
+.navigation__item--active .navigation__icon rect:last-of-type {
+  display: none; //Внутри иконок идет два изображения, отображающихся через rect. Через активный класс отключаем одно из них.
+}

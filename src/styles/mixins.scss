@@ -1,0 +1,32 @@
+@mixin flex($justify: flex-start, $align: stretch, $direction: row, $gap: 0) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+  gap: $gap;
+}
+
+@mixin loader(
+  $width: 58px,
+  $height: 58px,
+  $border: 4px,
+  $border-top: 4px,
+  $speed: 1s
+) {
+  display: inline-block;
+  width: $width;
+  height: $height;
+  border: $border solid currentColor;
+  border-top: $border-top solid currentColor;
+  border-radius: 50%;
+  animation: load $speed linear infinite;
+
+  @keyframes load {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
