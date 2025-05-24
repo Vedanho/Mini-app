@@ -8,6 +8,7 @@ import { useState } from "react";
 import { Pages } from "../../pages";
 import { useNavigate } from "react-router";
 import { useTelegram } from "../../hooks/useTelegram";
+import type { Heroes } from "../../constants";
 
 export default function HeroesCheck() {
   const { setHero } = useHero();
@@ -26,7 +27,8 @@ export default function HeroesCheck() {
   ];
 
   const handleCheckHero = () => {
-    setHero(activeHero);
+  
+    setHero(activeHero as Heroes);
     navigate(Pages.main);
   };
 
