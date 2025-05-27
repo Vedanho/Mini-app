@@ -1,0 +1,81 @@
+@use "styles/mixins.scss" as *;
+@use "styles/fonts.scss" as *;
+
+.players-list {
+  @include flex(start, start, column, 8px);
+
+  margin-top: 21px;
+
+  &__item {
+    @include flex(start, center);
+
+    height: 70px;
+    width: 100%;
+    border-radius: 12px;
+    border-bottom: 3px solid var(--color-medium);
+    background-color: var(--color-white);
+    padding-right: 15px;
+    font-weight: 500;
+  }
+
+  &__rating {
+    @include text-2xl();
+
+    width: 47px;
+    position: relative;
+    margin-right: 24px;
+    text-align: center;
+
+    span {
+      position: relative;
+      z-index: 10;
+    }
+  }
+
+  &__avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border: 1px solid var(--color-black);
+    border-radius: 50%;
+  }
+
+  &__info {
+    @include flex(start, center, row, 11px);
+  }
+
+  &__avatar-wrapp {
+    width: 55px;
+    height: 55px;
+    padding: 4px;
+    border-bottom: 3px solid var(--color-medium);
+    border-radius: 50%;
+  }
+
+  &__player-name {
+    @include text-tiny();
+  }
+
+  &__score {
+    @include flex(start, center, column, 3px);
+
+    margin-left: auto;
+  }
+
+  &__score-count {
+    @include text-smallest();
+  }
+}
+
+.players-list__rating::before {
+  position: absolute;
+  background-image: url(/rating/medal.png);
+  background-repeat: no-repeat;
+  content: "";
+  width: 47px;
+  height: 65px;
+  background-size: contain;
+  z-index: 1;
+  left: 0;
+  top: -6px;
+}

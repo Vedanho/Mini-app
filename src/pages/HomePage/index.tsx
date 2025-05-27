@@ -6,20 +6,8 @@ import EnergyIcon from "/home-page/energy-icon.png";
 import Logo from "/home-page/gold-logo.png";
 
 import "./index.scss";
-import { useHero } from "../../context/HeroContext";
-import { useNavigate } from "react-router";
-import { Pages } from "../../pages";
-import { useEffect } from "react";
 
 const HomePage = () => {
-  const { hero } = useHero();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!hero) {
-      navigate(Pages.auth);
-    }
-  }, [hero]);
   return (
     <div className="tap-screen">
       <div className="tap-screen__container container">

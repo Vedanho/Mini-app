@@ -1,0 +1,35 @@
+@use "styles/mixins.scss" as *;
+@use "styles/fonts.scss" as *;
+
+.tasks-list {
+  @include flex(start, start, column, 15px);
+
+  margin-top: 22px;
+
+  &__item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 16px;
+    border-radius: 12px;
+    border-bottom: 3px solid var(--color-medium);
+    background-color: var(--color-white);
+    padding: 11px 12px 11px 3px;
+  }
+
+  &__title {
+    @include text-big();
+
+    font-weight: 600;
+    margin-bottom: 13px;
+  }
+
+  &__reward {
+    @include flex(start, center, row, 10px);
+
+    flex-wrap: wrap;
+    border-radius: 8px;
+    border: 1px solid var(--color-black);
+    padding: 4px 6px;
+    margin-bottom: 13px;
+  }
+}
