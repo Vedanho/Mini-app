@@ -27,7 +27,7 @@ export default function HeroesCheck() {
   ];
 
   const handleCheckHero = () => {
-    setHero(activeHero as Heroes) ;
+    setHero(activeHero as Heroes);
     navigate(Pages.main);
   };
 

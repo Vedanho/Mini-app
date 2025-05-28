@@ -1,0 +1,24 @@
+@use "styles/mixins.scss" as *;
+@use "styles/fonts.scss" as *;
+
+.heroes-list {
+  @include flex(start, start, column, 10px);
+
+  height: calc(100vh - 250px);
+  margin-top: 21px;
+  overflow: scroll;
+
+  &__img-wrapp {
+    width: 100%;
+  }
+
+  &__img-wrapp img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__img-wrapp--disabled {
+    filter: grayscale(100%);
+  }
+}

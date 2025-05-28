@@ -5,10 +5,14 @@
   @include flex(start, start, column, 15px);
 
   margin-top: 22px;
+  height: calc(100vh - 250px);
+  overflow: scroll;
 
   &__item {
     display: grid;
     grid-template-columns: auto 1fr;
+    justify-content: center;
+    align-items: center;
     column-gap: 16px;
     border-radius: 12px;
     border-bottom: 3px solid var(--color-medium);
@@ -23,13 +27,77 @@
     margin-bottom: 13px;
   }
 
-  &__reward {
+  &__rewards {
     @include flex(start, center, row, 10px);
 
+    z-index: 100;
+    position: relative;
     flex-wrap: wrap;
     border-radius: 8px;
     border: 1px solid var(--color-black);
     padding: 4px 6px;
     margin-bottom: 13px;
   }
+
+  &__reward {
+    display: grid;
+    grid-template-areas:
+      "icon label"
+      "icon count";
+
+    column-gap: 6px;
+  }
+
+  &__reward-icon {
+    max-height: 33px;
+    height: 100%;
+    grid-area: icon;
+    object-fit: contain;
+  }
+
+  &__reward-count {
+    @include text-big();
+
+    grid-area: count;
+    font-weight: 700;
+  }
+
+  &__reward-title {
+    grid-area: label;
+
+    font-size: 9px;
+  }
+
+  &__img-wrapp {
+    @include flex(center, center);
+
+    width: 120px;
+    height: 120px;
+    background-color: var(--color-orange);
+    border-radius: 50%;
+  }
+
+  &__img {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.tasks-list__rewards-wrapp {
+  position: relative;
+}
+
+.tasks-list__rewards-wrapp::after {
+  position: absolute;
+  content: "";
+  width: calc(100% - 2px);
+  height: 100%;
+  border: 1px solid var(--color-gray);
+  border-radius: 6px 6px 8px 8px;
+  left: 0;
+  bottom: -3px;
+  border-top-color: transparent;
 }

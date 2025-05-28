@@ -3,6 +3,7 @@ import Tabs from "../../components/Tabs";
 import "./index.scss";
 import PlayersList from "../../components/PlayersList";
 import TasksList from "../../components/TasksList";
+import HeroesList from "../../components/HeroesList";
 
 enum Tab {
   PlayersList = 0,
@@ -21,7 +22,7 @@ const RatingPage = () => {
       case Tab.Tasks:
         return <TasksList />;
       case Tab.HeroesList:
-        return <div>Qr</div>;
+        return <HeroesList />;
     }
   };
 
