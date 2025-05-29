@@ -6,9 +6,12 @@ import MoneyIcon from "/common/money-icon.png";
 import Brilliant from "/common/brilliant.png";
 import Potion from "/common/potion.png";
 import "./index.scss";
+import Quiz from "../Quiz";
+import { useState } from "react";
 
 const MOC_DATA = [
   {
+    id: "history",
     img: ArtImg,
     title: "История России 5 вопросов",
     reward: [
@@ -17,6 +20,7 @@ const MOC_DATA = [
     ],
   },
   {
+    id: "art",
     img: FlagImg,
     title: "История России 5 вопросов",
     reward: [
@@ -26,6 +30,7 @@ const MOC_DATA = [
     ],
   },
   {
+    id: "nature",
     img: NatureImg,
     title: "История России 5 вопросов",
     reward: [
@@ -42,6 +47,12 @@ const rewardIcon = {
 };
 
 const TasksList = () => {
+  const [activeQuiz, setActiveQuiz] = useState<string | null>(null);
+
+  if (activeQuiz) {
+    return <Quiz />;
+  }
+
   return (
     <div className="tasks-list">
       {MOC_DATA.map((item) => {
@@ -71,7 +82,9 @@ const TasksList = () => {
                   </div>
                 )}
               </div>
-              <Button variant="orange">Начать</Button>
+              <Button variant="orange" onClick={() => setActiveQuiz(item.id)}>
+                Начать
+              </Button>
             </div>
           </div>
         );

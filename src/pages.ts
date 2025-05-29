@@ -3,5 +3,5 @@ export const Pages = {
   auth: "/auth",
   shop: "/shop",
   rating: "/rating",
-  discount: "/discount"
+  discount: "/discount",
 }

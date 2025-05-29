@@ -1,0 +1,56 @@
+@use "styles/mixins.scss" as *;
+@use "styles/fonts.scss" as *;
+
+.quiz {
+  margin-top: 21px;
+  padding: 27px 20px 20px;
+  border-radius: 12px;
+  border-bottom: 3px solid var(--color-medium);
+  background-color: var(--color-white);
+
+  &__label {
+    @include flex(start, center, row, 17px);
+  }
+
+  &__img-wrapper {
+    @include flex(center, center);
+
+    width: 95px;
+    height: 95px;
+    background-color: var(--color-orange);
+    border-radius: 50%;
+
+    img {
+      max-width: 80px;
+      max-height: 80px;
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__label-name {
+    @include text-big();
+
+    font-weight: 600;
+  }
+
+  &__questions-list {
+    margin-top: 27px;
+    padding: 15px 12px;
+    border-radius: 12px;
+    background-color: var(--color-light-gray);
+  }
+
+  &__question {
+    @include text-regular();
+
+    font-weight: 600;
+  }
+
+  &__answers {
+    @include flex(start, start, column, 12px);
+
+    margin-top: 12px;
+  }
+}

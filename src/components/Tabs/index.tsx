@@ -6,13 +6,15 @@ const Tabs = ({
   tabs,
   setActiveTab,
   activeTab,
+  isSeparatedTabs = false,
 }: {
   tabs: string[];
   setActiveTab: (val: number) => void;
   activeTab: number;
+  isSeparatedTabs?: boolean;
 }) => {
   return (
-    <div className="tabs">
+    <div className={clsx("tabs", { "tabs--separated": isSeparatedTabs })}>
       {tabs?.map((tab, index) => {
         const isTabActive = index === activeTab;
         return (

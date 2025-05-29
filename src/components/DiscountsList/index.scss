@@ -1,0 +1,68 @@
+@use "styles/mixins.scss" as *;
+@use "styles/fonts.scss" as *;
+
+.points-list {
+  @include flex(start, start, column, 14px);
+  
+  margin-top: 21px;
+  height: calc(100vh - 250px);
+  overflow: scroll;
+
+  &__item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    justify-content: center;
+    align-items: center;
+    column-gap: 16px;
+    border-radius: 12px;
+    border-bottom: 3px solid var(--color-medium);
+    background-color: var(--color-white);
+    padding: 11px;
+  }
+
+  &__img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+
+    &--discount {
+      width: 140px;
+      height: 140px;
+    }
+  }
+
+  &__title {
+    @include text-big();
+
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+
+  &__discount {
+    @include text-smallest();
+    @include flex(start, center, row, 6px);
+
+    margin-bottom: 14px;
+    padding: 3px 8px;
+    border: 1px solid var(--color-black);
+    box-shadow: 0px 3px 0px 0px #9c9c9c;
+    border-radius: 8px;
+    font-weight: 500;
+  }
+
+  &__btn {
+    border-radius: 4px;
+    font-weight: 700;
+  }
+}
+
+.points-list__item--discount {
+  .points-list__discount {
+    max-width: max-content;
+  }
+
+  .points-list__img {
+    width: 140px;
+    height: 140px;
+  }
+}

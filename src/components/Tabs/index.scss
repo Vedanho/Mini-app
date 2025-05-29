@@ -22,4 +22,14 @@
       font-weight: 700;
     }
   }
+
+  &--separated {
+    column-gap: 5px;
+    background-color: transparent;
+    border-bottom: unset;
+
+    .tabs__tab {
+      border-radius: 12px;
+    }
+  }
 }

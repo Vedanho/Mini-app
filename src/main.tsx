@@ -11,6 +11,7 @@ import LayoutWithPoints from "./Layout/LayoutWithPoints";
 import Shop from "./pages/ShopPage";
 import AnimatedOutlet from "./Layout/AnimatedLayout";
 import RatingPage from "./pages/RatingPage";
+import DiscountPage from "./pages/DiscountPage";
 
 const router = createBrowserRouter([
   {
@@ -36,8 +37,12 @@ const router = createBrowserRouter([
               },
               {
                 path: Pages.rating,
-                element: <RatingPage />,
+                element: <RatingPage />
               },
+              {
+                path: Pages.discount, 
+                element: <DiscountPage />
+              }
             ],
           },
         ],

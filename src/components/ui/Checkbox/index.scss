@@ -1,0 +1,47 @@
+@use "styles/mixins.scss" as *;
+@use "styles/fonts.scss" as *;
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  
+  &__input {
+    display: none;
+    svg {
+      opacity: 0;
+    }
+
+    &:checked + .checkbox__custom {
+      svg {
+        opacity: 1;
+      }
+    }
+  }
+  
+  &__custom {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #B8B4B4;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+
+    svg {
+      width: 24px;
+      height: 24px;
+      fill: white;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+  }
+  
+  &__text {
+    @include text-regular();
+    
+    font-weight: 500;
+  }
+}

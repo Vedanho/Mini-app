@@ -3,6 +3,7 @@ import Tabs from "../../components/Tabs";
 import "./index.scss";
 import HeroClothes from "../../components/HeroClothes";
 import ShopProducts from "../../components/ShopProducts";
+import QrScanner from "../../components/QrScan";
 
 enum Tab {
   HeroClothes = 0,
@@ -21,7 +22,7 @@ const ShopPage = () => {
       case Tab.Goods:
         return <ShopProducts />;
       case Tab.Qr:
-        return <div>Qr</div>;
+        return <QrScanner onScan={() => alert("founded")} />;
     }
   };
 
