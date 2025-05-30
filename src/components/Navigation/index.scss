@@ -16,6 +16,10 @@
 
   &__item {
     @include flex(start, center, column, 8px);
+
+    max-width: 45px;
+    width: 100%;
+    text-align: center;
   }
 
   &__icon {
@@ -27,6 +31,7 @@
     @include text-small();
 
     color: var(--color-orange);
+    line-height: 10px;
   }
 }
 

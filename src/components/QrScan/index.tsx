@@ -38,7 +38,7 @@ const QrScanner: React.FC<{ onScan: (result: string) => void }> = ({ onScan }) =
     <div className="qr-scanner">
       <div className="qr-scanner__title">Наведите камеру на QR-код</div>
       <div className="qr-scanner__video-wrapp">
-        <video ref={videoRef} autoPlay muted playsInline className="qr-scanner__video" />
+        <video width="100%" height={320} ref={videoRef} autoPlay muted playsInline className="qr-scanner__video" />
       </div>
     </div>
   );

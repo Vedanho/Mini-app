@@ -1,14 +1,16 @@
+import clsx from "clsx";
 import "./index.scss";
 
 interface CheckboxProps {
   label: string;
   checked?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  className?: string;
 }
 
-const Checkbox = ({ label, checked, onChange }: CheckboxProps) => {
+const Checkbox = ({ label, checked, onChange, className }: CheckboxProps) => {
   return (
-    <label className="checkbox">
+    <label className={clsx("checkbox", className)}>
       <input type="checkbox" className="checkbox__input" checked={checked} onChange={onChange} />
       <div className="checkbox__custom">
         <svg width="27" height="26" viewBox="0 0 27 26" fill="none" xmlns="http://www.w3.org/2000/svg">

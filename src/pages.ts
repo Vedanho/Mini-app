@@ -4,4 +4,5 @@ export const Pages = {
   shop: "/shop",
   rating: "/rating",
   discount: "/discount",
+  regist: "/regist",
 }

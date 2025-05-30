@@ -7,6 +7,7 @@ import Logo from "/home-page/gold-logo.png";
 
 import "./index.scss";
 
+
 const HomePage = () => {
   return (
     <div className="tap-screen">

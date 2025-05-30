@@ -12,6 +12,7 @@ import Shop from "./pages/ShopPage";
 import AnimatedOutlet from "./Layout/AnimatedLayout";
 import RatingPage from "./pages/RatingPage";
 import DiscountPage from "./pages/DiscountPage";
+import RegistPage from "./pages/RegistPage";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: Pages.auth,
-        Component: AuthPage,
+        element: <AuthPage />,
+      },
+      {
+        path: Pages.regist,
+        element: <RegistPage />,
       },
       {
         element: <MainLayout />,
@@ -37,12 +42,12 @@ const router = createBrowserRouter([
               },
               {
                 path: Pages.rating,
-                element: <RatingPage />
+                element: <RatingPage />,
               },
               {
-                path: Pages.discount, 
-                element: <DiscountPage />
-              }
+                path: Pages.discount,
+                element: <DiscountPage />,
+              },
             ],
           },
         ],
