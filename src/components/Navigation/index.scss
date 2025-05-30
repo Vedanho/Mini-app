@@ -7,16 +7,20 @@
   z-index: 1000;
   position: fixed;
   bottom: 10px;
-  left: 16px;
-  right: 16px;
+  // left: 16px;
+  // right: 16px;
   padding: 8px 20px;
   background-color: var(--color-white);
   border-radius: 12px;
   border-bottom: 3px solid var(--color-medium);
+  width: 100%;
+  bottom: 0;
+  border-radius: 12px 12px 0 0;
 
   &__item {
     @include flex(start, center, column, 8px);
 
+    height: 58px;
     max-width: 45px;
     width: 100%;
     text-align: center;
