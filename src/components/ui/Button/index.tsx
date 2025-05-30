@@ -3,15 +3,15 @@ import type { ButtonProps } from "./types";
 import "./index.scss";
 import { useTelegram } from "../../../hooks/useTelegram";
 
-const Button = ({ children, className, variant = "white", ...props }: ButtonProps) => {
+const Button = ({ children, className, variant = "white", onClick, ...props }: ButtonProps) => {
   const { webApp } = useTelegram();
   const buttonVariants: Record<string, string> = {
     white: "button--white",
     orange: "button--orange",
   };
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (props.onClick) {
-      props.onClick(e);
+    if (onClick) {
+      onClick(e);
     }
 
     if (webApp) {
