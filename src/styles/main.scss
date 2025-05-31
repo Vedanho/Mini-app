@@ -39,6 +39,10 @@ body {
   flex-direction: column;
   margin: 0;
   overflow: hidden;
+  background-image: url("/common/zarya-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .page {
