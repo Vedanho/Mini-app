@@ -3,7 +3,7 @@ import Konek from "/home-page/konek-tap.png";
 import "./index.scss";
 import { useHero } from "../../context/HeroContext";
 import MoneyIcon from "/common/money-icon.png";
-import type { MouseEvent } from "react";
+import { useRef, type MouseEvent } from "react";
 
 interface Props {
   onTap: () => void;
@@ -11,6 +11,7 @@ interface Props {
 
 const Hero = ({ onTap }: Props) => {
   const { hero } = useHero();
+  const isTappedRef = useRef(false);
   const heroes = {
     zarya: {
       img: Zarya,
@@ -21,8 +22,11 @@ const Hero = ({ onTap }: Props) => {
   };
 
   const handleTap = (event: MouseEvent<HTMLImageElement>) => {
-    const { clientX, clientY } = event;
+    if (isTappedRef.current) return;
 
+    isTappedRef.current = true;
+    const { clientX, clientY } = event;
+    console.log(event);
     const moneyElement = document.createElement("div");
     const moneyIcon = document.createElement("img");
     const moneyCount = document.createElement("span");
@@ -45,10 +49,14 @@ const Hero = ({ onTap }: Props) => {
     onTap();
   };
 
+  const handlePointerUp = () => {
+    isTappedRef.current = false;
+  };
+
   return (
     <div className="hero">
       <div className="hero__img-wrapp">
-        <img src={heroes[hero]?.img} alt="hero" className="hero__img" onPointerDown={handleTap} />
+        <img src={heroes[hero]?.img} alt="hero" className="hero__img" onPointerUp={handlePointerUp} onPointerDown={handleTap} />
       </div>
     </div>
   );
