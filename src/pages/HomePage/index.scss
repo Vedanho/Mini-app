@@ -58,7 +58,16 @@
     font-weight: 600;
     position: absolute;
     right: 50%;
-    top: 47%;
+    top: 50%;
     transform: translate(50%, -50%);
+  }
+}
+
+.tap-screen__hero img {
+  transition: transform 0.1s ease, filter 0.1s ease;
+
+  &:active {
+    transform: scale(0.96);
+    filter: brightness(0.9);
   }
 }

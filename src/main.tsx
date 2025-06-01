@@ -16,12 +16,12 @@ import RegistPage from "./pages/RegistPage";
 
 const router = createBrowserRouter([
   {
+    path: Pages.auth,
+    element: <AuthPage />,
+  },
+  {
     element: <AnimatedOutlet />,
     children: [
-      {
-        path: Pages.auth,
-        element: <AuthPage />,
-      },
       {
         path: Pages.regist,
         element: <RegistPage />,

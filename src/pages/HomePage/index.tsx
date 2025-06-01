@@ -1,25 +1,32 @@
 import PointsElements from "../../components/PointsElements";
-import ProgressBar from "/home-page/progress-bar.png";
-import BarIcon from "/common/money-icon.png";
+
 import Hero from "../../components/Hero";
 import EnergyIcon from "/home-page/energy-icon.png";
 import Logo from "/home-page/gold-logo.png";
 
 import "./index.scss";
+import ProgressBar from "../../components/ProgressBar";
+import { useState } from "react";
 
 const HomePage = () => {
+  const [tabCount, setTabCount] = useState(0);
+  const maxValue = 100;
+
+  const onTap = () => {
+    if (tabCount >= maxValue) {
+      return;
+    }
+    setTabCount((prev) => prev + 1);
+  };
+
   return (
     <div className="tap-screen">
       <div className="tap-screen__container container">
         <PointsElements />
-        <div className="progress-bar">
-          <img src={BarIcon} alt="bar-icon" className="progress-bar__bar-icon" />
-          <img src={ProgressBar} alt="progress" className="progress-bar__progress" />
-          <span className="progress-bar__points">140 000 / 300 000</span>
-        </div>
+        <ProgressBar tabCount={tabCount} maxValue={maxValue} />
         <div className="tap-screen__content">
           <div className="tap-screen__hero">
-            <Hero />
+            <Hero onTap={onTap} />
           </div>
           <div className="tap-screen__bottom-content">
             <div className="tap-screen__energy-block">

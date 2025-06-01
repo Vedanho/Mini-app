@@ -1,0 +1,16 @@
+.progress-bar {
+  &__wrapper {
+    height: 34px;
+    width: 100%;
+  }
+
+  &__progress {
+    position: absolute;
+    height: 22px;
+    width: calc(100% - 6px);
+  }
+
+  &__bar-icon {
+    z-index: 1000;
+  }
+}

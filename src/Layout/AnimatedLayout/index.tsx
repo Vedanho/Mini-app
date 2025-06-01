@@ -2,6 +2,8 @@ import { useOutlet, useLocation } from "react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { Pages } from "../../pages";
 import { useEffect, useRef, useState } from "react";
+import Navigation from "../../components/Navigation";
+// import { unstable_ViewTransition as ViewTransition } from "react";
 
 const PagesOrder = [Pages.main, Pages.shop, Pages.rating, Pages.discount];
 
@@ -32,32 +34,35 @@ export default function AnimatedOutlet() {
     originalConsoleLog(...args);
   };
 
-  console.log("ref", ref);
   const variants = {
     initial: () => {
       return {
         x: direction === "left" ? 300 : -300,
-        opacity: 0,
+        opacity: 1,
       };
     },
-    animate: { x: 0, opacity: 1,  },
+    animate: { x: 0, opacity: 1 },
+    exit: { opacity: 1 },
   };
 
   return (
     <div>
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={location.pathname}
-          custom={currentPageOrder}
-          variants={variants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          transition={{ duration: 0.4, ease: "easeInOut" }}
-        >
-          {outlet}
-        </motion.div>
-      </AnimatePresence>
+      <div style={{ overflow: "hidden" }}>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={location.pathname}
+            custom={currentPageOrder}
+            variants={variants}
+            initial="initial"
+            animate="animate"
+            exit={{ opacity: 1 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+          >
+            {outlet}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+      <Navigation />
     </div>
   );
 }

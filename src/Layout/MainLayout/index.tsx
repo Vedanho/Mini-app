@@ -1,6 +1,4 @@
 import { Outlet } from "react-router";
-import Navigation from "../../components/Navigation";
-import ScreenBackground from "../../components/ScreenBackground";
 import { useEffect } from "react";
 import { useHero } from "../../context/HeroContext";
 import { useNavigate } from "react-router";
@@ -14,12 +12,7 @@ const MainLayout = () => {
     }
   }, []);
 
-  return (
-    <ScreenBackground>
-      <Navigation />
-      <Outlet />
-    </ScreenBackground>
-  );
+  return <Outlet />;
 };
 
 export default MainLayout;
