@@ -65,6 +65,11 @@ li {
 
 a {
   text-decoration: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent; 
+  -webkit-touch-callout: none;
+  user-select: none;
+  outline: none;
 }
 
 button {

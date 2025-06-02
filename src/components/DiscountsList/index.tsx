@@ -11,7 +11,7 @@ const DiscountsList = ({ discounts = [], isPointsList = false }: { discounts: Po
       {discounts.map((item) => {
         return (
           <div className={clsx("points-list__item", { "points-list__item--discount": !isPointsList })}>
-            <img src={item.img} alt="img" className="points-list__img" />
+            <img width={120} height={120} src={item.img} alt="img" className="points-list__img" />
             <div>
               <div className="points-list__title">{item.label}</div>
               <div className="points-list__discount">

@@ -59,7 +59,7 @@ const TasksList = () => {
         return (
           <div className="tasks-list__item">
             <div className="tasks-list__img-wrapp">
-              <img src={item.img} alt="img" className="tasks-list__img" />
+              <img width={100} height={100} src={item.img} alt="img" className="tasks-list__img" />
             </div>
             <div>
               <div className="tasks-list__title">{item.title}</div>

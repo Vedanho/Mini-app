@@ -53,7 +53,7 @@ const HeroClothes = ({ items = MOC_DATA }) => {
           <div className="hero-items__item">
             <div className="hero-items__img-wrapp">
               <img src={backgoroundEliipse[hero]} alt="bg" className="hero-items__img-ellipse" />
-              <img src={item.img} alt="item" className="hero-items__img" />
+              <img width={133} height={120} src={item.img} alt="item" className="hero-items__img" />
               <span className="hero-items__level">
                 {item?.level}
                 <span>ур</span>

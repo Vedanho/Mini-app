@@ -65,7 +65,7 @@ const PlayersList = () => {
             </div>
             <div className="players-list__info">
               <div className="players-list__avatar-wrapp">
-                <img src={item.avatar} alt="avatar" className="players-list__avatar" />
+                <img width={47} height={44} src={item.avatar} alt="avatar" className="players-list__avatar" />
               </div>
               <span className="players-list__player-name">{item.name}</span>
             </div>
