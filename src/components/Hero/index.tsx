@@ -26,7 +26,7 @@ const Hero = ({ onTap }: Props) => {
 
     isTappedRef.current = true;
     const { clientX, clientY } = event;
-    console.log(event);
+    
     const moneyElement = document.createElement("div");
     const moneyIcon = document.createElement("img");
     const moneyCount = document.createElement("span");

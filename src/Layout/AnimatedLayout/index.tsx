@@ -2,8 +2,8 @@ import { useOutlet, useLocation } from "react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { Pages } from "../../pages";
 import { useEffect, useRef, useState } from "react";
+import "./index.scss";
 import Navigation from "../../components/Navigation";
-// import { unstable_ViewTransition as ViewTransition } from "react";
 
 const PagesOrder = [Pages.main, Pages.shop, Pages.rating, Pages.discount];
 
@@ -41,13 +41,13 @@ export default function AnimatedOutlet() {
         opacity: 1,
       };
     },
-    animate: { x: 0, opacity: 1 },
+    animate: { x: 0, opacity: 1, height: "100%" },
     exit: { opacity: 1 },
   };
 
   return (
-    <div>
-      <div style={{ overflow: "hidden" }}>
+    <>
+      <div className="content-wrapper">
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
@@ -63,6 +63,6 @@ export default function AnimatedOutlet() {
         </AnimatePresence>
       </div>
       <Navigation />
-    </div>
+    </>
   );
 }

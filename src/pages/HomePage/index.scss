@@ -2,6 +2,7 @@
 @use "styles/fonts.scss" as *;
 
 .tap-screen {
+  height: 100%;
   &__container {
     padding-top: 25px;
   }
