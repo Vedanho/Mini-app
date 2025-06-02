@@ -76,6 +76,8 @@ const AuthPage = () => {
       <div className={clsx("auth-page__container", { container: step !== PageContent.HeroCheck })}>
         <div className="auth-page__inner">
           <img
+            width={180}
+            height={155}
             className={clsx("auth-page__logo", {
               "auth-page__logo--mini": step !== PageContent.StartContent,
             })}

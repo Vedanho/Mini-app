@@ -26,7 +26,7 @@ const Hero = ({ onTap }: Props) => {
 
     isTappedRef.current = true;
     const { clientX, clientY } = event;
-    
+
     const moneyElement = document.createElement("div");
     const moneyIcon = document.createElement("img");
     const moneyCount = document.createElement("span");
@@ -56,7 +56,13 @@ const Hero = ({ onTap }: Props) => {
   return (
     <div className="hero">
       <div className="hero__img-wrapp">
-        <img src={heroes[hero]?.img} alt="hero" className="hero__img" onPointerUp={handlePointerUp} onPointerDown={handleTap} />
+        <img
+          src={heroes[hero]?.img}
+          alt="hero"
+          className="hero__img"
+          onPointerUp={handlePointerUp}
+          onPointerDown={handleTap}
+        />
       </div>
     </div>
   );

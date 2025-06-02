@@ -47,7 +47,7 @@ export default function HeroesCheck() {
         {heroes?.map((el) => (
           <SwiperSlide key={el.img} onChange={() => setActiveHero(el.hero)}>
             <div className="heroes-check__item">
-              <img className="heroes-check__img" src={el.img} alt="hero" />
+              <img width={390} height={472} className="heroes-check__img" src={el.img} alt="hero" />
             </div>
           </SwiperSlide>
         ))}
