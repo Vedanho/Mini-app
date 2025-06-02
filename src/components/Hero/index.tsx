@@ -4,12 +4,14 @@ import "./index.scss";
 import { useHero } from "../../context/HeroContext";
 import MoneyIcon from "/common/money-icon.png";
 import { useRef, type MouseEvent } from "react";
+import { useTelegram } from "../../hooks/useTelegram";
 
 interface Props {
   onTap: () => void;
 }
 
 const Hero = ({ onTap }: Props) => {
+  const { webApp } = useTelegram();
   const { hero } = useHero();
   const isTappedRef = useRef(false);
   const heroes = {
@@ -26,6 +28,10 @@ const Hero = ({ onTap }: Props) => {
 
     isTappedRef.current = true;
     const { clientX, clientY } = event;
+
+    if (webApp) {
+      webApp.HapticFeedback.impactOccurred("light");
+    }
 
     const moneyElement = document.createElement("div");
     const moneyIcon = document.createElement("img");
