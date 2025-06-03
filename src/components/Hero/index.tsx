@@ -61,15 +61,13 @@ const Hero = ({ onTap }: Props) => {
 
   return (
     <div className="hero">
-      <div className="hero__img-wrapp">
-        <img
-          src={heroes[hero]?.img}
-          alt="hero"
-          className="hero__img"
-          onPointerUp={handlePointerUp}
-          onPointerDown={handleTap}
-        />
-      </div>
+      <img
+        src={heroes[hero]?.img}
+        alt="hero"
+        className="hero__img"
+        onPointerUp={handlePointerUp}
+        onPointerDown={handleTap}
+      />
     </div>
   );
 };

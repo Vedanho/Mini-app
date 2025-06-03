@@ -4,17 +4,14 @@
 .navigation {
   @include flex(space-between, center);
 
+  width: 100%;
   max-width: 500px;
   z-index: 1000;
-  position: fixed;
-  bottom: 10px;
   height: 77px;
   padding: 8px 20px;
   background-color: var(--color-white);
   border-radius: 12px;
   border-bottom: 3px solid var(--color-medium);
-  width: 100%;
-  bottom: 0;
   border-radius: 12px 12px 0 0;
   padding-right: max(25px, var(--tg-safe-area-inset-right));
   padding-left: max(25px, var(--tg-safe-area-inset-left));

@@ -1,7 +1,7 @@
 import { useOutlet, useLocation } from "react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { Pages } from "../../pages";
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import "./index.scss";
 import Navigation from "../../components/Navigation";
 
@@ -46,7 +46,7 @@ export default function AnimatedOutlet() {
   };
 
   return (
-    <>
+    <Fragment>
       <div className="content-wrapper">
         <AnimatePresence mode="wait">
           <motion.div
@@ -63,6 +63,6 @@ export default function AnimatedOutlet() {
         </AnimatePresence>
       </div>
       <Navigation />
-    </>
+    </Fragment>
   );
 }

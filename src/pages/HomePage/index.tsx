@@ -25,9 +25,7 @@ const HomePage = () => {
         <PointsElements />
         <ProgressBar tabCount={tabCount} maxValue={maxValue} />
         <div className="tap-screen__content">
-          <div className="tap-screen__hero">
-            <Hero onTap={onTap} />
-          </div>
+          <Hero onTap={onTap} />
           <div className="tap-screen__bottom-content">
             <div className="tap-screen__energy-block">
               <img src={EnergyIcon} alt="energy" />
