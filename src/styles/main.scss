@@ -66,14 +66,14 @@ li {
 a {
   text-decoration: none;
   user-select: none;
-  -webkit-tap-highlight-color: transparent; 
+  -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   user-select: none;
   outline: none;
 }
 
 button {
-  -webkit-tap-highlight-color: transparent; 
+  -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   user-select: none;
   outline: none;
@@ -84,6 +84,17 @@ button {
   border-top: 4px solid var(--color-white);
   border-radius: 50%;
   animation: spin 1.2s linear infinite;
+}
+
+.viewport-limited {
+  max-height: calc(100vh - 220px);
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /* Анимация вращения */

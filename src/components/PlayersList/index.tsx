@@ -56,7 +56,7 @@ const MOC_DATA = [
 
 const PlayersList = () => {
   return (
-    <div className="players-list">
+    <div className="players-list viewport-limited">
       {MOC_DATA.map((item) => {
         return (
           <div className="players-list__item">

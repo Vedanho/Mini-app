@@ -21,7 +21,7 @@ const MOC_DATA = [
 
 const HeroesList = () => {
   return (
-    <div className="heroes-list">
+    <div className="heroes-list viewport-limited">
       {MOC_DATA.map((item) => {
         return (
           <div className={clsx("heroes-list__img-wrapp", { "heroes-list__img-wrapp--disabled": item.disabled })}>

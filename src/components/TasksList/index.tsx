@@ -54,7 +54,7 @@ const TasksList = () => {
   }
 
   return (
-    <div className="tasks-list">
+    <div className="tasks-list viewport-limited">
       {MOC_DATA.map((item) => {
         return (
           <div className="tasks-list__item">

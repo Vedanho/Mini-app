@@ -39,7 +39,7 @@ const MOC_DATA = [
 
 const ShopProducts = ({ items = MOC_DATA }) => {
   return (
-    <div className="products">
+    <div className="products viewport-limited">
       {items.map((item) => {
         return (
           <div className="products__item">

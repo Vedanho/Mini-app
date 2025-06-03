@@ -5,7 +5,6 @@
   @include flex(start, start, column, 14px);
   
   margin-top: 21px;
-  height: calc(100vh - 250px);
   overflow: scroll;
 
   &__item {

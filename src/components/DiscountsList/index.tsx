@@ -7,7 +7,7 @@ import type { Points } from "../../pages/DiscountPage";
 
 const DiscountsList = ({ discounts = [], isPointsList = false }: { discounts: Points[]; isPointsList?: boolean }) => {
   return (
-    <div className="points-list">
+    <div className="points-list viewport-limited">
       {discounts.map((item) => {
         return (
           <div className={clsx("points-list__item", { "points-list__item--discount": !isPointsList })}>

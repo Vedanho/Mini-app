@@ -47,7 +47,7 @@ const HeroClothes = ({ items = MOC_DATA }) => {
   };
 
   return (
-    <div className="hero-items">
+    <div className="hero-items viewport-limited">
       {items?.map((item) => {
         return (
           <div className="hero-items__item">
