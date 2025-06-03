@@ -9,12 +9,14 @@ import { Pages } from "../../pages";
 import { useNavigate } from "react-router";
 import { useTelegram } from "../../hooks/useTelegram";
 import type { Heroes } from "../../constants";
+import useBackground from "../../hooks/useBackground";
 
 export default function HeroesCheck() {
   const { setHero } = useHero();
   const [activeHero, setActiveHero] = useState<string | null>(null);
   const navigate = useNavigate();
   const { webApp } = useTelegram();
+  const { setBackground } = useBackground();
   const heroes: { hero: string; img: string }[] = [
     {
       hero: "zarya",
@@ -29,6 +31,7 @@ export default function HeroesCheck() {
   const handleCheckHero = () => {
     setHero(activeHero as Heroes);
     navigate(Pages.main);
+    setBackground(activeHero as Heroes);
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

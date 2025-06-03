@@ -1,17 +1,19 @@
-import { useEffect } from "react";
-import { useHero } from "../context/HeroContext";
+import { useEffect, useState } from "react";
 
 const useBackground = () => {
-  const { hero } = useHero();
+  const [background, setBackground] = useState<null | string>(null);
 
   useEffect(() => {
     const body = document.querySelector("body");
 
-    if (hero) {
+    if (background) {
       body?.classList.add("background-image")
-      body!.id = hero
+      body!.id = background
     }
-  }, [hero])
+  }, [background])
+
+
+  return { background, setBackground };
 };
 
 export default useBackground;

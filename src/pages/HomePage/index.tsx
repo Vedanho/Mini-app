@@ -7,11 +7,9 @@ import Logo from "/home-page/gold-logo.png";
 import "./index.scss";
 import ProgressBar from "../../components/ProgressBar";
 import { useState } from "react";
-import useBackground from "../../hooks/useBackground";
 
 const HomePage = () => {
   const [tabCount, setTabCount] = useState(0);
-  useBackground();
   const maxValue = 100;
 
   const onTap = () => {
