@@ -41,7 +41,17 @@ body {
   flex-direction: column;
   margin: 0;
   overflow: hidden;
+}
+
+#konek {
+  background-image: url("/common/konek-bg.png");
+}
+
+#zarya {
   background-image: url("/common/zarya-bg.png");
+}
+
+.background-image {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -91,7 +101,7 @@ button {
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  
+
   &::-webkit-scrollbar {
     display: none;
   }
