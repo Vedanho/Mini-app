@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import { useState } from "react";
 import LoadingScreen from "../../components/LoadingScreen";
 import { useTelegram } from "../../hooks/useTelegram";
 import Logo from "/common/logo.png";
@@ -45,9 +45,12 @@ const AuthPage = () => {
         <Button
           className="auth-btn"
           onClick={async () => {
-            console.log(requestContact.isAvailable())
+            console.log(requestContact.isAvailable());
+            const contact = await requestContact();
+            console.log(123, contact);
             if (requestContact.isAvailable()) {
               const contact = await requestContact();
+              alert(23);
               console.log(contact);
             }
           }}
