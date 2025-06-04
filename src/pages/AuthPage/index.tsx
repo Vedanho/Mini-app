@@ -19,14 +19,14 @@ enum PageContent {
 }
 
 const AuthPage = () => {
-  const { isLoading } = useTelegram();
+  const { isLoading, webApp } = useTelegram();
   const [step, setStep] = useState(PageContent.StartContent);
-  useEffect(() => {
-    if (isTMA()) {
-      init();
-      console.log(123);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (isTMA()) {
+  //     init();
+  //     console.log(123);
+  //   }
+  // }, []);
 
   if (isLoading) {
     return <LoadingScreen />;
@@ -39,7 +39,7 @@ const AuthPage = () => {
       </Button>
     );
   };
-
+  console.log(console.log(window.Telegram.WebApp.version))
   const AuthButtons = () => {
     return (
       <div className="auth-page__auth-btns">
@@ -52,14 +52,10 @@ const AuthPage = () => {
         <Button
           className="auth-btn"
           onClick={async () => {
-            console.log(requestContact.isAvailable());
-            const contact = await requestContact();
-            console.log(123, contact);
-            if (requestContact.isAvailable()) {
-              const contact = await requestContact();
-              alert(23);
-              console.log(contact);
-            }
+            webApp.requestContact((data) => {
+              console.log("Contact requested", data);
+            })
+        
           }}
         >
           Получить контакты
