@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoadingScreen from "../../components/LoadingScreen";
 import { useTelegram } from "../../hooks/useTelegram";
 import Logo from "/common/logo.png";
@@ -8,7 +8,8 @@ import clsx from "clsx";
 import HeroesCheck from "../../components/HeroesCheck";
 import { Input } from "../../components/ui/Input";
 import Checkbox from "../../components/ui/Checkbox";
-import { requestContact } from "@telegram-apps/sdk";
+import { init, requestContact } from "@telegram-apps/sdk";
+import { isTMA } from "@telegram-apps/bridge";
 
 enum PageContent {
   StartContent = 1,
@@ -20,6 +21,12 @@ enum PageContent {
 const AuthPage = () => {
   const { isLoading } = useTelegram();
   const [step, setStep] = useState(PageContent.StartContent);
+  useEffect(() => {
+    if (isTMA()) {
+      init();
+      console.log(123);
+    }
+  }, []);
 
   if (isLoading) {
     return <LoadingScreen />;
