@@ -2,7 +2,7 @@
 @use "styles/fonts.scss" as *;
 
 .auth-page {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   background-image: url("/common/zarya-bg.png");
   background-repeat: no-repeat;
@@ -29,6 +29,11 @@
       max-width: 180px;
       max-height: 155px;
       margin-top: 17px;
+    }
+
+    &--regist {
+      max-width: 72px;
+      max-height: 72px;
     }
   }
 
@@ -62,7 +67,6 @@
   background: var(--color-white);
   border-radius: 12px;
   padding: 21px;
-  margin-top: 60px;
   border-bottom: 3px solid var(--color-medium);
 
   &__title {
@@ -113,4 +117,9 @@
   @include text-medium();
 
   font-weight: 700;
+}
+
+.auth-link {
+  text-decoration: underline;
+  color: var(--color-orange);
 }
