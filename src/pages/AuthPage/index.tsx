@@ -1,4 +1,7 @@
-import { useEffect, useState } from "react";
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+//@ts-nocheck
+
+import {  useState } from "react";
 import LoadingScreen from "../../components/LoadingScreen";
 import { useTelegram } from "../../hooks/useTelegram";
 import Logo from "/common/logo.png";
@@ -8,8 +11,8 @@ import clsx from "clsx";
 import HeroesCheck from "../../components/HeroesCheck";
 import { Input } from "../../components/ui/Input";
 import Checkbox from "../../components/ui/Checkbox";
-import { init, requestContact } from "@telegram-apps/sdk";
-import { isTMA } from "@telegram-apps/bridge";
+// import { init, requestContact } from "@telegram-apps/sdk";
+// import { isTMA } from "@telegram-apps/bridge";
 
 enum PageContent {
   StartContent = 1,
@@ -39,7 +42,7 @@ const AuthPage = () => {
       </Button>
     );
   };
-  console.log(console.log(window.Telegram.WebApp.version))
+  console.log(console.log(window.Telegram.WebApp.version));
   const AuthButtons = () => {
     return (
       <div className="auth-page__auth-btns">
@@ -54,8 +57,7 @@ const AuthPage = () => {
           onClick={async () => {
             webApp.requestContact((data) => {
               console.log("Contact requested", data);
-            })
-        
+            });
           }}
         >
           Получить контакты
