@@ -35,12 +35,14 @@ const RegistrationForm = ({ onSubmit }: { onSubmit: SubmitHandler<FieldValues> }
         <Controller
           name="birthDate"
           control={control}
+          rules={{ required: true }}
           render={({ field }) => <Input type="text" placeholder="Дата рождения" {...field} />}
         />
         <Controller
           name="email"
           control={control}
           render={({ field }) => <Input type="email" placeholder="Email" {...field} />}
+          rules={{ required: true }}
         />
         <Controller
           name="phone"
