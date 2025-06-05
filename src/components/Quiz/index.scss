@@ -98,3 +98,8 @@
   margin-top: 16px;
   font-weight: 600;
 }
+
+.quiz .completed-icon::before {
+  width: 75px;
+  height: 75px;
+}

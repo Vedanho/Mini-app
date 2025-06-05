@@ -6,6 +6,7 @@ import Success from "/tasks/right-result.png";
 import Fail from "/tasks/wrong-result.png";
 import MoneyIcon from "/common/money-icon.png";
 import Potion from "/common/potion.png";
+import clsx from "clsx";
 
 const MOC_DATA = [
   {
@@ -88,7 +89,7 @@ const Quiz = () => {
   return (
     <div className="quiz">
       <div className="quiz__label">
-        <div className="quiz__img-wrapper">
+        <div className={clsx("quiz__img-wrapper", activeAnswer?.isCorrect && "completed-icon")}>
           <img src={MocImg} alt="quiz" />
         </div>
         <div className="quiz__label-name">Природа в России 5 вопросов</div>

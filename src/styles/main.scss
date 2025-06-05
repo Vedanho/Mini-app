@@ -38,6 +38,13 @@
   position: relative;
   margin: 0 auto;
   overflow-y: scroll;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 body {

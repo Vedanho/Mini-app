@@ -2,6 +2,7 @@ import { Controller, useForm, type FieldValues, type SubmitHandler } from "react
 import { Input } from "../ui/Input";
 import Checkbox from "../../components/ui/Checkbox";
 import Button from "../ui/Button";
+import "./index.scss"
 
 const RegistrationForm = ({ onSubmit }: { onSubmit: SubmitHandler<FieldValues> }) => {
   const {
@@ -18,31 +19,62 @@ const RegistrationForm = ({ onSubmit }: { onSubmit: SubmitHandler<FieldValues> }
           name="firstName"
           control={control}
           rules={{ required: true }}
-          render={({ field }) => <Input type="text" placeholder="Имя" hasError={!!errors.firstName} {...field} />}
+          render={({ field }) => (
+            <Input
+              type="text"
+              placeholder="Имя"
+              hasError={!!errors.firstName}
+              className="registration__input"
+              {...field}
+            />
+          )}
         />
         <Controller
           name="lastName"
           control={control}
           rules={{ required: true }}
-          render={({ field }) => <Input type="text" placeholder="Фамилия" hasError={!!errors.lastName} {...field} />}
+          render={({ field }) => (
+            <Input
+              type="text"
+              placeholder="Фамилия"
+              hasError={!!errors.lastName}
+              {...field}
+              className="registration__input"
+            />
+          )}
         />
         <Controller
           name="middleName"
           control={control}
           rules={{ required: true }}
-          render={({ field }) => <Input type="text" placeholder="Отчество" hasError={!!errors.middleName} {...field} />}
+          render={({ field }) => (
+            <Input
+              type="text"
+              placeholder="Отчество"
+              hasError={!!errors.middleName}
+              className="registration__input"
+              {...field}
+            />
+          )}
         />
         <Controller
           name="birthDate"
           control={control}
           rules={{ required: true }}
-          render={({ field }) => <Input type="text" placeholder="Дата рождения" {...field} />}
+          render={({ field }) => (
+            <Input
+              type="text"
+              placeholder="Дата рождения"
+              hasError={!!errors.birthDate}
+              className="registration__input"
+              {...field}
+            />
+          )}
         />
         <Controller
           name="email"
           control={control}
           render={({ field }) => <Input type="email" placeholder="Email" {...field} />}
-          rules={{ required: true }}
         />
         <Controller
           name="phone"
@@ -58,7 +90,7 @@ const RegistrationForm = ({ onSubmit }: { onSubmit: SubmitHandler<FieldValues> }
           render={({ field }) => (
             <Checkbox
               hasError={!!errors.offerAgreement}
-              className="registration__checkbox"
+              className="registration__checkbox required"
               label={
                 <>
                   Согласен с <a className="auth-link">условиями обработки</a> даннных
@@ -72,7 +104,7 @@ const RegistrationForm = ({ onSubmit }: { onSubmit: SubmitHandler<FieldValues> }
           className="registration__checkbox"
           label={
             <>
-              Вступить в<a className="auth-link"> программу лояльности</a>
+              Вступить в<a className="auth-link"> программу лояльности "Галамарт"</a>
             </>
           }
         />

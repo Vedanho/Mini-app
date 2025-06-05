@@ -74,14 +74,8 @@ const TasksList = () => {
     <div className="tasks-list viewport-limited">
       {MOC_DATA.map((item) => {
         return (
-          <div
-            className={clsx(
-              "tasks-list__item",
-              item.isCompleted && "tasks-list__item--completed",
-              item.isFailed && "tasks-list__item--failed"
-            )}
-          >
-            <div className="tasks-list__img-wrapp">
+          <div className={clsx("tasks-list__item", item.isFailed && "tasks-list__item--failed")}>
+            <div className={clsx("tasks-list__img-wrapp", item.isCompleted && "completed-icon")}>
               <img width={100} height={100} src={item.img} alt="img" className="tasks-list__img" />
             </div>
             <div>

@@ -17,7 +17,9 @@
     color: var(--color-medium);
   }
 
-  &--error {
-    border-color: var(--color-light-red);
-  }
+}
+
+.input.input--error {
+  border-color: var(--color-light-red);
+  
 }

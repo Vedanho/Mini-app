@@ -110,7 +110,7 @@
   }
 }
 
-.tasks-list__item--completed .tasks-list__img-wrapp::before {
+.completed-icon::before {
   content: "";
   width: 90px;
   height: 90px;
