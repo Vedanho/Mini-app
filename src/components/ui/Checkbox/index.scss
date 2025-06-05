@@ -6,7 +6,7 @@
   align-items: center;
   gap: 12px;
   cursor: pointer;
-  
+
   &__input {
     display: none;
     svg {
@@ -19,7 +19,7 @@
       }
     }
   }
-  
+
   &__custom {
     width: 40px;
     height: 40px;
@@ -39,10 +39,14 @@
       transition: opacity 0.2s ease;
     }
   }
-  
+
   &__text {
     @include text-regular();
 
     font-weight: 500;
   }
+}
+
+.checkbox--error .checkbox__custom {
+    border-color: var(--color-light-red);
 }

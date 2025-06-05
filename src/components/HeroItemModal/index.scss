@@ -1,0 +1,51 @@
+@use "styles/mixins.scss" as *;
+@use "styles/fonts.scss" as *;
+
+.item-modal {
+  margin: 0 60px;
+  border-radius: 12px;
+  overflow: hidden;
+
+  &__inner {
+    padding: 25px 20px;
+    background-color: var(--color-white);
+  }
+
+  &__img-wrapper {
+    @include flex(center, center);
+  }
+
+  &__btn {
+    @include text-regular();
+
+    margin-top: 27px;
+    font-weight: 600;
+  }
+}
+
+.price-block {
+  @include flex(flex-end, center);
+
+  height: 38px;
+  max-width: 120px;
+  margin: 28px auto 0;
+  position: relative;
+  padding-right: 9px;
+  background-color: var(--color-light);
+  border-radius: 21px;
+  border-bottom: 3px solid var(--color-medium);
+  font-weight: 700;
+
+  &__icon {
+    position: absolute;
+    object-fit: contain;
+    left: -8px;
+  }
+
+  &__description {
+    margin-top: 27px;
+    text-align: center;
+    font-size: 15px;
+    line-height: 17px;
+  }
+}

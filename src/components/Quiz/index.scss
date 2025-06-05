@@ -55,3 +55,46 @@
     margin-top: 12px;
   }
 }
+
+.quiz-result {
+  @include flex(center, center, column);
+
+  &__title {
+    @include text-regular();
+
+    margin-top: 26px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  &__img {
+    margin-top: 15px;
+  }
+
+  &__rewards {
+    @include flex(space-between, center);
+
+    margin-top: 14px;
+    width: 100%;
+  }
+
+  &__rewards-count {
+    font-size: 39px;
+    font-weight: 700;
+  }
+
+  &__reward {
+    @include flex(start, center, row, 7px);
+
+    img {
+      object-fit: contain;
+    }
+  }
+}
+
+.fail-text {
+  @include text-regular();
+
+  margin-top: 16px;
+  font-weight: 600;
+}

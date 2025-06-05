@@ -8,6 +8,7 @@ import Potion from "/common/potion.png";
 import "./index.scss";
 import Quiz from "../Quiz";
 import { useState } from "react";
+import clsx from "clsx";
 
 const MOC_DATA = [
   {
@@ -18,6 +19,7 @@ const MOC_DATA = [
       { value: 1200, kind: "money" },
       { value: 200, kind: "potion" },
     ],
+    isCompleted: true,
   },
   {
     id: "art",
@@ -28,6 +30,7 @@ const MOC_DATA = [
       { value: 200, kind: "potion" },
       { value: 200, kind: "brilliant" },
     ],
+    isFailed: true,
   },
   {
     id: "nature",
@@ -53,11 +56,31 @@ const TasksList = () => {
     return <Quiz />;
   }
 
+  const renderButton = (item: (typeof MOC_DATA)[0]) => {
+    if (item.isCompleted) {
+      return <div className="result-text">Успешно пройден</div>;
+    }
+    if (item.isFailed) {
+      return <div className="result-text">Квиз провален</div>;
+    }
+    return (
+      <Button variant="orange" onClick={() => setActiveQuiz(item.id)}>
+        Начать
+      </Button>
+    );
+  };
+
   return (
     <div className="tasks-list viewport-limited">
       {MOC_DATA.map((item) => {
         return (
-          <div className="tasks-list__item">
+          <div
+            className={clsx(
+              "tasks-list__item",
+              item.isCompleted && "tasks-list__item--completed",
+              item.isFailed && "tasks-list__item--failed"
+            )}
+          >
             <div className="tasks-list__img-wrapp">
               <img width={100} height={100} src={item.img} alt="img" className="tasks-list__img" />
             </div>
@@ -82,9 +105,7 @@ const TasksList = () => {
                   </div>
                 )}
               </div>
-              <Button variant="orange" onClick={() => setActiveQuiz(item.id)}>
-                Начать
-              </Button>
+              {renderButton(item)}
             </div>
           </div>
         );

@@ -107,6 +107,15 @@
     font-weight: bold;
     font-size: 16px;
   }
+
+  &__error-text {
+    @include text-medium();
+
+    text-align: center;
+    margin-top: 20px;
+    color: var(--color-light-red);
+    font-weight: 700;
+  }
 }
 
 .registration .registration__submit {

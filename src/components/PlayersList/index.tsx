@@ -1,6 +1,8 @@
 import "./index.scss";
 import Img from "/home-page/konek-tap.png";
 import MoneyIcon from "/common/money-icon.png";
+import Emoji from "/rating/emoji.png";
+import { useState } from "react";
 
 const MOC_DATA = [
   {
@@ -54,9 +56,29 @@ const MOC_DATA = [
   },
 ];
 
-const PlayersList = () => {
+const EmptyRating = () => {
   return (
-    <div className="players-list viewport-limited">
+    <div className="empty-rating">
+      <div className="empty-rating__head">
+        <img width={120} height={120} src={Emoji} alt="emoji" />
+        <div className="empty-rating__title">Топ игроков уже на подходе!</div>
+      </div>
+      <div className="empty-rating__text">
+        Мы наводим порядок в таблице: считаем очки, раздаём медали и фиксируем места в рейтинге.
+      </div>
+    </div>
+  );
+};
+
+const PlayersList = () => {
+  const [isShowEmptyRating, setIsShowEmptyRating] = useState(false);
+
+  if (isShowEmptyRating) {
+    return <EmptyRating />;
+  }
+
+  return (
+    <div className="players-list viewport-limited" onClick={() => setIsShowEmptyRating(true)}>
       {MOC_DATA.map((item) => {
         return (
           <div className="players-list__item">

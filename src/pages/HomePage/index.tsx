@@ -6,11 +6,55 @@ import Logo from "/home-page/gold-logo.png";
 
 import "./index.scss";
 import ProgressBar from "../../components/ProgressBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Button from "../../components/ui/Button";
+import RegistrationForm from "../../components/RegistrationForm";
+import Modal from "../../components/Modal";
+
+const NoticeBlock = ({
+  setIsShowRegistration,
+  setIsShowNotice,
+}: {
+  setIsShowRegistration: (val: boolean) => void;
+  setIsShowNotice: (val: boolean) => void;
+}) => {
+  return (
+    <div className="notice-block">
+      <div className="notice-block__inner">
+        <div className="notice-block__title">Давайте копить бонусы вместе</div>
+        <Button
+          className="notice-block__btn"
+          variant="orange"
+          onClick={() => {
+            setIsShowRegistration(true);
+            setIsShowNotice(false);
+          }}
+        >
+          Регистрация
+        </Button>
+        <Button
+          className="notice-block__btn notice-block__btn--white"
+          variant="white"
+          onClick={() => setIsShowNotice(false)}
+        >
+          Позже
+        </Button>
+      </div>
+    </div>
+  );
+};
 
 const HomePage = () => {
   const [tabCount, setTabCount] = useState(0);
   const maxValue = 100;
+  const [isShowRegistration, setIsShowRegistration] = useState(false);
+  const [isShowNotice, setIsShowNotice] = useState(false);
+
+  useEffect(() => {
+    if (tabCount % 5 === 0 && !!tabCount) {
+      setIsShowNotice(true);
+    }
+  }, [tabCount]);
 
   const onTap = () => {
     if (tabCount >= maxValue) {
@@ -40,6 +84,12 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+      {isShowNotice && <NoticeBlock setIsShowRegistration={setIsShowRegistration} setIsShowNotice={setIsShowNotice} />}
+      {isShowRegistration && (
+        <Modal isModalOpen={isShowRegistration} onClose={() => setIsShowRegistration(false)}>
+          <RegistrationForm onSubmit={() => console.log(123)} />
+        </Modal>
+      )}
     </div>
   );
 };

@@ -1,0 +1,15 @@
+.modal {
+  position: relative;
+}
+
+.modal-close {
+  &__btn {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    background-color: transparent;
+    border: none;
+  }
+}

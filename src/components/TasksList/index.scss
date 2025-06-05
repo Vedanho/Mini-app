@@ -71,6 +71,7 @@
   &__img-wrapp {
     @include flex(center, center);
 
+    position: relative;
     width: 120px;
     height: 120px;
     background-color: var(--color-orange);
@@ -100,4 +101,30 @@
   left: 0;
   bottom: -3px;
   border-top-color: transparent;
+}
+
+.tasks-list__item {
+  &--failed * {
+    filter: grayscale(100%);
+    pointer-events: none;
+  }
+}
+
+.tasks-list__item--completed .tasks-list__img-wrapp::before {
+  content: "";
+  width: 90px;
+  height: 90px;
+  position: absolute;
+  background-image: url("/tasks/check.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  z-index: 100;
+}
+
+.result-text {
+  @include text-regular();
+
+  font-weight: 600;
+  color: var(--color-black);
 }

@@ -72,3 +72,45 @@
     filter: brightness(0.9);
   }
 }
+
+.notice-block {
+  width: calc(100% - 32px);
+  padding: 0 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 21px;
+  z-index: 1000;
+  border-radius: 12px;
+  background-color: var(--color-white);
+
+
+  &__title {
+    @include text-large();
+
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  &__inner {
+    text-align: center;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  &__btn {
+    @include text-regular();
+
+    max-width: 195px;
+    width: 100%;
+    border-radius: 6px;
+    font-weight: 700;
+
+    &--white {
+      border: 1px solid var(--color-black);
+      margin-top: 12px;
+      color: var(--color-black)
+    }
+  }
+}

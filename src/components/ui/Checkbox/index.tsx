@@ -7,12 +7,13 @@ interface CheckboxProps {
   checked?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
+  hasError?: boolean;
 }
 
-const Checkbox = ({ label, checked, onChange, className }: CheckboxProps) => {
+const Checkbox = ({ label, checked, onChange, className, hasError,  ...rest }: CheckboxProps) => {
   return (
-    <label className={clsx("checkbox", className)}>
-      <input type="checkbox" className="checkbox__input" checked={checked} onChange={onChange} />
+    <label className={clsx("checkbox", className, hasError && "checkbox--error")}>
+      <input type="checkbox" className="checkbox__input" checked={checked} onChange={onChange} {...rest} />
       <div className="checkbox__custom">
         <svg width="27" height="26" viewBox="0 0 27 26" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path

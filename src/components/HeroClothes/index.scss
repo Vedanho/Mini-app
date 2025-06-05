@@ -187,3 +187,8 @@
     top: -12px;
   }
 }
+
+.hero-items__item--disabled * {
+  filter: grayscale(100%);
+  pointer-events: none;
+  }

@@ -79,3 +79,27 @@
   left: 0;
   top: -6px;
 }
+
+.empty-rating {
+  padding: 22px 13px 42px;
+  margin-top: 100px;
+  background-color: var(--color-white);
+  border-radius: 12px;
+
+  &__head {
+    @include flex(center, center, row, 27px);
+    @include text-big();
+
+    font-weight: 600;
+  }
+
+  &__text {
+    @include text-regular();
+
+    margin-top: 27px;
+    font-weight: 600;
+    padding: 17px 4px 24px;
+    background-color: var(--color-light-gray);
+    border-radius: 12px;
+  }
+}
