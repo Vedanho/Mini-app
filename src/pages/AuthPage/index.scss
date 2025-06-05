@@ -7,7 +7,8 @@
   background-image: url("/common/zarya-bg.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
-
+  flex: 1;
+  
   &__container {
     height: 100%;
   }
