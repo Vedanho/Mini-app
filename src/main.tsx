@@ -13,6 +13,7 @@ import AnimatedOutlet from "./Layout/AnimatedLayout";
 import RatingPage from "./pages/RatingPage";
 import DiscountPage from "./pages/DiscountPage";
 import RegistPage from "./pages/RegistPage";
+import { RegisterProvider } from "./context/RegistContext";
 
 const router = createBrowserRouter([
   {
@@ -58,8 +59,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <HeroProvider>
-      <RouterProvider router={router} />
-    </HeroProvider>
+    <RegisterProvider>
+      <HeroProvider>
+        <RouterProvider router={router} />
+      </HeroProvider>
+    </RegisterProvider>
   </StrictMode>
 );

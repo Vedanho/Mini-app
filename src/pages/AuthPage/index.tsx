@@ -10,6 +10,7 @@ import Button from "../../components/ui/Button";
 import clsx from "clsx";
 import HeroesCheck from "../../components/HeroesCheck";
 import RegistrationForm from "../../components/RegistrationForm";
+import { useRegister } from "../../context/RegistContext";
 
 enum PageContent {
   AuthButtons = 1,
@@ -19,6 +20,7 @@ enum PageContent {
 
 const AuthPage = () => {
   const { isLoading, webApp } = useTelegram();
+  const { setIsRegistered } = useRegister();
   const [step, setStep] = useState(PageContent.AuthButtons);
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     setStep(PageContent.HeroCheck);
@@ -34,7 +36,13 @@ const AuthPage = () => {
         <Button className="auth-btn" onClick={() => setStep(PageContent.Registration)}>
           Зарегистрироваться
         </Button>
-        <Button className="auth-btn" onClick={() => setStep(PageContent.HeroCheck)}>
+        <Button
+          className="auth-btn"
+          onClick={() => {
+            setStep(PageContent.HeroCheck);
+            setIsRegistered("unregistered")
+          }}
+        >
           Начать без регистрации
         </Button>
         <Button

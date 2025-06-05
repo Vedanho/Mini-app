@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import Button from "../../components/ui/Button";
 import RegistrationForm from "../../components/RegistrationForm";
 import Modal from "../../components/Modal";
+import { useRegister } from "../../context/RegistContext";
 
 const NoticeBlock = ({
   setIsShowRegistration,
@@ -49,9 +50,10 @@ const HomePage = () => {
   const maxValue = 100;
   const [isShowRegistration, setIsShowRegistration] = useState(false);
   const [isShowNotice, setIsShowNotice] = useState(false);
+  const { isRegistered } = useRegister();
 
   useEffect(() => {
-    if (tabCount % 5 === 0 && !!tabCount) {
+    if (tabCount % 5 === 0 && !!tabCount && isRegistered === "unregistered") {
       setIsShowNotice(true);
     }
   }, [tabCount]);
