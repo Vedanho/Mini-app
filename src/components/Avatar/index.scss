@@ -1,0 +1,25 @@
+@use "styles/mixins.scss" as *;
+@use "styles/fonts.scss" as *;
+
+.avatar {
+  @include flex(center, center, row, 4px);
+
+  max-width: 106px;
+
+  &__img-wrapper {
+    @include flex();
+
+    background-color: var(--color-white);
+    padding: 3px;
+    border-radius: 50%;
+    border-bottom: 3px solid var(--color-medium);
+  }
+
+  &__name {
+    @include text-tiny();
+
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

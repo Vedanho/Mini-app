@@ -45,7 +45,7 @@ const AuthPage = () => {
         >
           Начать без регистрации
         </Button>
-        <Button
+        {/* <Button
           className="auth-btn"
           onClick={async () => {
             webApp.requestContact((data) => {
@@ -54,7 +54,7 @@ const AuthPage = () => {
           }}
         >
           Получить контакты
-        </Button>
+        </Button> */}
       </div>
     );
   };

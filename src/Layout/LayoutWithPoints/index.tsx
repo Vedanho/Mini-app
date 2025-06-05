@@ -4,11 +4,13 @@ import MoneyIcon from "/common/money-icon.png";
 import Brilliant from "/common/brilliant.png";
 import Potion from "/common/potion.png";
 import "./index.scss";
+import Avatar from "../../components/Avatar";
 
 const LayoutWithPoints = () => {
   const Layout = () => {
     return (
       <div className="points-layout">
+        <Avatar />
         <img src={MiniLogo} alt="logo" className="points-layout__logo" />
         <div className="points-layout__points-wrapp">
           <div className="points-layout__points-block">

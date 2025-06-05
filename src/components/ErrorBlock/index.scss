@@ -1,0 +1,47 @@
+@use "styles/mixins.scss" as *;
+@use "styles/fonts.scss" as *;
+
+.error-block {
+  max-width: 361px;
+  width: 100%;
+  padding: 0 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &__inner {
+    @include flex(center, center, column);
+
+    background-color: var(--color-white);
+    border-radius: 12px;
+    padding: 21px;
+  }
+
+  &__head {
+    @include flex(center, center, row, 18px);
+  }
+
+  &__title {
+    @include text-large();
+
+    font-weight: 700;
+  }
+
+  &__text {
+    @include text-regular();
+
+    margin-top: 20px;
+    font-weight: 700;
+  }
+
+  &__btn {
+    @include text-regular();
+
+    height: 48px;
+    max-width: 195px;
+    margin-top: 14px;
+    font-weight: 700;
+    border-radius: 6px;
+  }
+}

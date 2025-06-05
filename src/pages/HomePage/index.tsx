@@ -11,6 +11,7 @@ import Button from "../../components/ui/Button";
 import RegistrationForm from "../../components/RegistrationForm";
 import Modal from "../../components/Modal";
 import { useRegister } from "../../context/RegistContext";
+import ErrorBlock from "../../components/ErrorBlock";
 
 const NoticeBlock = ({
   setIsShowRegistration,
@@ -50,6 +51,7 @@ const HomePage = () => {
   const maxValue = 100;
   const [isShowRegistration, setIsShowRegistration] = useState(false);
   const [isShowNotice, setIsShowNotice] = useState(false);
+  const [showError, setShowError] = useState(false);
   const { isRegistered } = useRegister();
 
   useEffect(() => {
@@ -74,7 +76,7 @@ const HomePage = () => {
           <Hero onTap={onTap} />
           <div className="tap-screen__bottom-content">
             <div className="tap-screen__energy-block">
-              <img src={EnergyIcon} alt="energy" />
+              <img src={EnergyIcon} alt="energy" onClick={() => setShowError(true)} />
               <div className="tap-screen__energy">
                 <span className="tap-screen__title">Энергия</span>
                 <span className="tap-screen__energy-count">7600/8000</span>
@@ -92,6 +94,7 @@ const HomePage = () => {
           <RegistrationForm onSubmit={() => console.log(123)} />
         </Modal>
       )}
+      {showError && <ErrorBlock onClose={() => setShowError(false)} />}
     </div>
   );
 };

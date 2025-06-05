@@ -2,13 +2,14 @@
 @use "styles/fonts.scss" as *;
 
 .points-layout {
-  @include flex(end, center);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   padding-top: 7px;
 
   &__logo {
     width: 54px;
     height: 47px;
-    margin-right: 38px;
+    justify-self: center;
   }
 
   &__points-wrapp {

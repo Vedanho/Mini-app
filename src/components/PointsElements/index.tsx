@@ -1,10 +1,12 @@
 import Potion from "/common/potion.png";
 import Brilliant from "/common/brilliant.png";
 import "./index.scss";
+import Avatar from "../Avatar";
 
 const PointsElements = () => {
   return (
     <div className="points">
+      <Avatar />
       <div className="points__inner">
         <div className="points__block">
           <img src={Brilliant} alt="brilliant" className="points__img" />

@@ -2,7 +2,7 @@
 @use "styles/fonts.scss" as *;
 
 .points {
-  @include flex(end);
+  @include flex(space-between);
   margin-top: 7px;
 
   &__block {
