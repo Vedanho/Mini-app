@@ -11,6 +11,11 @@
   &__img {
     height: 55vh;
     object-fit: contain;
+
+    &:active {
+      transform: scale(0.97);
+      filter: brightness(0.9);
+    }
   }
 }
 
