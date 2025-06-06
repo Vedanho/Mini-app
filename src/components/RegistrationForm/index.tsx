@@ -2,7 +2,7 @@ import { Controller, useForm, type FieldValues, type SubmitHandler } from "react
 import { Input } from "../ui/Input";
 import Checkbox from "../../components/ui/Checkbox";
 import Button from "../ui/Button";
-import "./index.scss"
+import "./index.scss";
 
 const RegistrationForm = ({ onSubmit }: { onSubmit: SubmitHandler<FieldValues> }) => {
   const {
@@ -79,7 +79,10 @@ const RegistrationForm = ({ onSubmit }: { onSubmit: SubmitHandler<FieldValues> }
         <Controller
           name="phone"
           control={control}
-          render={({ field }) => <Input type="tel" placeholder="+7(___)___-__-__" {...field} />}
+          rules={{ required: true }}
+          render={({ field }) => (
+            <Input hasError={!!errors.phone} type="tel" className="registration__input" placeholder="+7(___)___-__-__" {...field} />
+          )}
         />
       </div>
       <div className="registration__checkbox-wrapper">
