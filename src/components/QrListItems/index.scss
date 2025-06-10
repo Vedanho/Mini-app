@@ -1,0 +1,56 @@
+@use "styles/mixins.scss" as *;
+@use "styles/fonts.scss" as *;
+
+.qr-list {
+  margin-top: 21px;
+
+  &__items {
+    @include flex(start, center, column, 10px);
+
+    margin-top: 18px;
+
+    &.viewport-limited {
+      max-height: calc(100vh - 280px);
+    }
+  }
+
+  &__text {
+    font-size: 15px;
+    line-height: 17px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  &__item {
+    @include flex(center, start, row, 10px);
+
+    padding: 16px 9px;
+    border-radius: 12px;
+    border-bottom: 3px solid var(--color-medium);
+    background-color: var(--color-white);
+  }
+
+  &__item-bonuses {
+    @include flex(start, center, row, 16px);
+  }
+
+  &__bonus {
+    @include flex(start, center, row, 4px);
+  }
+
+  &__count {
+    @include text-smallest();
+
+    font-weight: 600;
+  }
+}
+
+.qr-button {
+  max-width: max-content;
+  padding: 6px;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 90px;
+  z-index: 10000;
+}

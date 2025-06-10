@@ -5,13 +5,14 @@ import "./index.scss";
 import clsx from "clsx";
 
 interface IModalProps {
+  isHideCloseButton?: boolean;
   isModalOpen: boolean;
   onClose: () => void;
   className?: string;
   children: React.ReactNode;
 }
 
-const Modal = ({ children, isModalOpen, onClose, className, ...props }: IModalProps) => {
+const Modal = ({ children, isModalOpen, onClose, className, isHideCloseButton, ...props }: IModalProps) => {
   return (
     <>
       <ReactModal
@@ -31,9 +32,11 @@ const Modal = ({ children, isModalOpen, onClose, className, ...props }: IModalPr
         }}
         {...props}
       >
-        <button className="modal-close__btn" onClick={onClose}>
-          <img src={CloseIcon} alt="close" />
-        </button>
+        {!isHideCloseButton && (
+          <button className="modal-close__btn" onClick={onClose}>
+            <img src={CloseIcon} alt="close" />
+          </button>
+        )}
         {children}
       </ReactModal>
     </>

@@ -11,6 +11,7 @@ import clsx from "clsx";
 import HeroesCheck from "../../components/HeroesCheck";
 import RegistrationForm from "../../components/RegistrationForm";
 import { useRegister } from "../../context/RegistContext";
+import { auth } from "../../api/auth";
 
 enum PageContent {
   AuthButtons = 1,
@@ -30,17 +31,23 @@ const AuthPage = () => {
     return <LoadingScreen />;
   }
 
+  const handleAuth = async () => {
+    const timezone = -new Date().getTimezoneOffset() / 60;
+
+    await auth({ initTgData: webApp?.initData, timezone });
+  };
+
   const AuthButtons = () => {
     return (
       <div className="auth-page__auth-btns">
-        <Button className="auth-btn" onClick={() => setStep(PageContent.Registration)}>
+        <Button className="auth-btn" onClick={handleAuth}>
           Зарегистрироваться
         </Button>
         <Button
           className="auth-btn"
           onClick={() => {
             setStep(PageContent.HeroCheck);
-            setIsRegistered("unregistered")
+            setIsRegistered("unregistered");
           }}
         >
           Начать без регистрации

@@ -43,6 +43,7 @@ const Hero = ({ onTap }: Props) => {
 
     moneyElement.style.left = `${clientX}px`;
     moneyElement.style.top = `${clientY}px`;
+    console.log(clientX, clientY);
 
     moneyElement.append(moneyIcon, moneyCount);
     document.body.appendChild(moneyElement);
@@ -73,3 +74,8 @@ const Hero = ({ onTap }: Props) => {
 };
 
 export default Hero;
+
+
+//timestep - текущее время игрока
+//tap_multiple - скок прибавится монеток за клик
+// тапаю у себя по своей метрике, заполняю по инфе которая приходит с бэка

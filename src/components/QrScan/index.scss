@@ -1,20 +1,19 @@
 @use "styles/mixins.scss" as *;
 @use "styles/fonts.scss" as *;
 
-
 .qr-scanner {
   position: relative;
   width: 100%;
   overflow: hidden;
 
   &__title {
-   @include text-large();
+    @include text-large();
 
-   text-align: center;
-   font-weight: 700;
-   color: var(--color-white);
-   margin-top: 51px;
-   margin-bottom: 30px;
+    text-align: center;
+    font-weight: 700;
+    color: var(--color-white);
+    margin-top: 51px;
+    margin-bottom: 30px;
   }
 
   &__video-wrapp {

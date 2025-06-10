@@ -1,4 +1,3 @@
-import { Swiper, SwiperSlide } from "swiper/react";
 import Hero1 from "/auth/hero_1.png";
 import Hero2 from "/auth/hero_2.png";
 import Button from "../ui/Button";
@@ -10,6 +9,7 @@ import { useNavigate } from "react-router";
 import { useTelegram } from "../../hooks/useTelegram";
 import type { Heroes } from "../../constants";
 import useBackground from "../../hooks/useBackground";
+import clsx from "clsx";
 
 export default function HeroesCheck() {
   const { setHero } = useHero();
@@ -17,46 +17,48 @@ export default function HeroesCheck() {
   const navigate = useNavigate();
   const { webApp } = useTelegram();
   const { setBackground } = useBackground();
-  const heroes: { hero: string; img: string }[] = [
+  const heroes: { name: string; img: string }[] = [
     {
-      hero: "zarya",
+      name: "zarya",
       img: Hero1,
     },
     {
-      hero: "konek",
+      name: "konek",
       img: Hero2,
     },
   ];
 
-  const handleCheckHero = () => {
+  const handleConfirm = () => {
     setHero(activeHero as Heroes);
     navigate(Pages.main);
     setBackground(activeHero as Heroes);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onSlideChange = (swiper: any) => {
-    const currentHero = heroes[swiper.realIndex]?.hero;
-
+  const handleCheckHero = (hero: { name: string; img: string }) => {
     if (webApp) {
       webApp.HapticFeedback.selectionChanged();
     }
-    setActiveHero(currentHero || null);
+    setActiveHero(hero?.name);
   };
 
   return (
     <div className="heroes-check">
-      <Swiper slidesPerView="auto" loop={true} className="heroes-check__swiper" onSlideChange={onSlideChange}>
-        {heroes?.map((el) => (
-          <SwiperSlide key={el.img} onChange={() => setActiveHero(el.hero)}>
-            <div className="heroes-check__item">
-              <img width={390} height={472} className="heroes-check__img" src={el.img} alt="hero" />
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      {heroes.map((hero, index) => {
+        return (
+          <div
+            key={index}
+            className={clsx(
+              "heroes-check__hero-wrapp",
+              activeHero === hero?.name && "heroes-check__hero-wrapp--active"
+            )}
+            onClick={() => handleCheckHero(hero)}
+          >
+            <img src={hero?.img} alt="hero" className="heroes-check__hero-img" />
+          </div>
+        );
+      })}
       <div className="heroes-check__btn-wrapper">
-        <Button className="heroes-check__btn auth-btn" onClick={handleCheckHero}>
+        <Button className="heroes-check__btn auth-btn" onClick={handleConfirm} disabled={!activeHero}>
           Выбрать героя
         </Button>
       </div>

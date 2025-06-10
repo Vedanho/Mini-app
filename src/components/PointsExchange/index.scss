@@ -1,0 +1,100 @@
+@use "styles/mixins.scss" as *;
+@use "styles/fonts.scss" as *;
+
+.exchange {
+  margin-top: 22px;
+  padding: 24px 20px;
+  background-color: var(--color-white);
+  border-radius: 12px;
+  border-bottom: 3px solid var(--color-medium);
+
+  &__title {
+    @include text-big();
+
+    font-weight: 600;
+  }
+
+  &__top {
+    @include flex(start, center, row, 18px);
+  }
+
+  &__info {
+    @include flex(start, center, row, 7px);
+
+    padding: 9px 8px;
+    max-width: max-content;
+    margin-top: 8px;
+    background-color: var(--color-light-gray);
+    border-radius: 8px;
+  }
+
+  &__content {
+    margin: 18px 34px 0;
+  }
+
+  &__content-text {
+    text-align: center;
+    font-size: 15px;
+    line-height: 17px;
+    font-weight: 500;
+  }
+
+  &__counter {
+    @include flex(space-between, center, row, 10px);
+
+    margin-top: 17px;
+    height: 57px;
+  }
+
+  &__counter-btn {
+    height: 100%;
+    width: 31px;
+    border-radius: 6px;
+    border: 1px solid var(--color-black);
+    text-align: center;
+    padding: 0;
+    color: var(--color-black);
+  }
+
+  &__points-count {
+    @include flex(center, center, row, 2px);
+    @include text-regular();
+
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid var(--color-black);
+    background-color: var(--color-light-orange);
+    font-weight: 600;
+  }
+
+  &__result-text {
+    margin-top: 22px;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  &__result-block {
+    @include flex(center, center, row, 2px);
+
+    margin-top: 17px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+
+    img {
+      object-fit: contain;
+    }
+  }
+
+  &__btn {
+    @include text-smallest();
+
+    display: block;
+    max-width: 160px;
+    margin: 18px auto 0;
+    font-weight: 700;
+    border-radius: 4px;
+  }
+}

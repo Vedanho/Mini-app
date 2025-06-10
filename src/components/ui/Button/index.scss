@@ -2,6 +2,7 @@
   width: 100%;
   border-radius: 12px;
   padding: 10px 12px;
+  transition: all 0.3s;
 
   &--white {
     background-color: var(--color-white);
@@ -15,5 +16,11 @@
     color: var(--color-white);
     border: unset;
     border-bottom: 3px solid var(--color-brown);
+  }
+
+  &:disabled {
+    background-color: var(--color-disabled-gray);
+    color: var(--color-white);
+    border-bottom-color: var(--color-medium)
   }
 }

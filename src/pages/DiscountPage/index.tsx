@@ -2,8 +2,8 @@ import { useState, type ReactNode } from "react";
 import Tabs from "../../components/Tabs";
 import "./index.scss";
 import DiscountsList from "../../components/DiscountsList";
-import PointsImg from "/discount/points.png";
 import DiscountImg from "/discount/discount.png";
+import PointsExchange from "../../components/PointsExchange";
 
 enum Tab {
   Points = 0,
@@ -18,23 +18,6 @@ export interface Points {
 
 const DiscountPage = () => {
   const [activeTab, setActiveTab] = useState(Tab.Points);
-  const points = [
-    {
-      img: PointsImg,
-      label: "Малый набор баллов",
-      discount: "1 балл за 500",
-    },
-    {
-      img: PointsImg,
-      label: "Малый набор баллов",
-      discount: "1 балл за 500",
-    },
-    {
-      img: PointsImg,
-      label: "Малый набор баллов",
-      discount: "1 балл за 500",
-    },
-  ];
 
   const discounts = [
     {
@@ -58,7 +41,7 @@ const DiscountPage = () => {
   const getContent = (): ReactNode => {
     switch (activeTab) {
       case Tab.Points:
-        return <DiscountsList discounts={points} isPointsList={true} />;
+        return <PointsExchange />;
       case Tab.Discount:
         return <DiscountsList discounts={discounts} />;
     }

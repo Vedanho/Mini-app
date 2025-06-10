@@ -1,0 +1,58 @@
+@use "styles/mixins.scss" as *;
+@use "styles/fonts.scss" as *;
+
+.discount-modal {
+  margin: 0 60px;
+}
+
+.exchange-modal-wrapper {
+  margin: 0 60px;
+}
+
+.exchange-modal {
+  padding: 29px 20px;
+  background-color: var(--color-white);
+  border-radius: 12px;
+  border-bottom: 3px solid var(--color-medium);
+
+  &__img {
+    text-align: center;
+  }
+
+  &__text {
+    margin-top: 24px;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  &__btn {
+    @include text-regular();
+
+    margin-top: 13px;
+    font-weight: 600;
+    border-radius: 10px;
+  }
+
+  .points-block {
+    height: 36px;
+    margin: 10px auto 0;
+    max-width: 110px;
+    width: 100%;
+  }
+}
+
+.exchange-modal--success .exchange-modal__text {
+  @include text-regular();
+
+  margin-top: 14px;
+  font-weight: 600;
+}
+
+.exchange-modal--success .points-block {
+  margin-top: 18px;
+}
+
+.exchange-modal--success .exchange-modal__btn {
+  margin-top: 24px;
+}

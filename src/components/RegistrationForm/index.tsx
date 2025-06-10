@@ -76,14 +76,6 @@ const RegistrationForm = ({ onSubmit }: { onSubmit: SubmitHandler<FieldValues> }
           control={control}
           render={({ field }) => <Input type="email" placeholder="Email" {...field} />}
         />
-        <Controller
-          name="phone"
-          control={control}
-          rules={{ required: true }}
-          render={({ field }) => (
-            <Input hasError={!!errors.phone} type="tel" className="registration__input" placeholder="+7(___)___-__-__" {...field} />
-          )}
-        />
       </div>
       <div className="registration__checkbox-wrapper">
         <Controller
@@ -103,14 +95,24 @@ const RegistrationForm = ({ onSubmit }: { onSubmit: SubmitHandler<FieldValues> }
             />
           )}
         />
-        <Checkbox
-          className="registration__checkbox"
-          label={
-            <>
-              Вступить в<a className="auth-link"> программу лояльности "Галамарт"</a>
-            </>
-          }
+        <Controller
+          name="loyaltyAgreement"
+          rules={{ required: true }}
+          control={control}
+          render={({ field }) => (
+            <Checkbox
+              hasError={!!errors.loyaltyAgreement}
+              className="registration__checkbox required"
+              label={
+                <>
+                  Вступить в<a className="auth-link"> программу лояльности "Галамарт"</a>
+                </>
+              }
+              {...field}
+            />
+          )}
         />
+
         <Checkbox className="registration__checkbox" label="Получать СМС рассылку" />
       </div>
       <Button className="registration__submit" type="submit" variant="orange">

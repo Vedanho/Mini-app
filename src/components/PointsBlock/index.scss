@@ -1,0 +1,58 @@
+@use "styles/mixins.scss" as *;
+@use "styles/fonts.scss" as *;
+
+.points-block {
+  @include flex(flex-end, center);
+
+  height: 26px;
+  position: relative;
+  padding-right: 9px;
+  background-color: var(--color-light);
+  border-radius: 21px;
+  border-bottom: 3px solid var(--color-medium);
+  font-weight: 700;
+
+  &__icon {
+    position: absolute;
+    object-fit: contain;
+  }
+
+  &__count {
+    text-align: center;
+    font-size: 15px;
+    line-height: 17px;
+  }
+
+  &__icon--potion {
+    
+  }
+
+  &--coins {
+    img {
+      left: -25px;
+    }
+  }
+
+  &--brilliant {
+    img {
+      left: -10px;
+    }
+  }
+
+  &--potion {
+    img {
+      left: -8px;
+      top: -12px;
+    }
+  }
+
+  &--coinsStack {
+    background-color: var(--color-orange);
+    border-bottom-color: var(--color-brown);
+    color: var(--color-white);
+
+    img {
+      left: -11px;
+    }
+  }
+}

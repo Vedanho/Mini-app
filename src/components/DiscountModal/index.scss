@@ -1,0 +1,38 @@
+@use "styles/mixins.scss" as *;
+@use "styles/fonts.scss" as *;
+
+.discount-modal {
+  margin: 0 60px;
+}
+
+.discount-inner {
+  padding: 29px 20px;
+  background-color: var(--color-white);
+  border-radius: 12px;
+  border-bottom: 3px solid var(--color-medium);
+
+  &__img {
+    text-align: center;
+  }
+
+  &__text {
+    margin-top: 24px;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  &__btn {
+    @include text-regular();
+
+    margin-top: 27px;
+    font-weight: 600;
+    border-radius: 10px;
+  }
+
+  .points-block {
+    margin: 10px auto;
+    max-width: 100px;
+    width: 100%;
+  }
+}
