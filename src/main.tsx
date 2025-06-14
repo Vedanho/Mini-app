@@ -14,6 +14,7 @@ import RatingPage from "./pages/RatingPage";
 import DiscountPage from "./pages/DiscountPage";
 import RegistPage from "./pages/RegistPage";
 import { RegisterProvider } from "./context/RegistContext";
+import { ToastContainer } from "react-toastify";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,7 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <RegisterProvider>
       <HeroProvider>
+        <ToastContainer />
         <RouterProvider router={router} />
       </HeroProvider>
     </RegisterProvider>

@@ -46,15 +46,40 @@
     margin-top: 46px;
     font-weight: 700;
   }
-
-  &__auth-btns {
-    @include flex(start, start, column, 12px);
-
-    width: 100%;
-    margin-top: 126px;
-  }
 }
 
+.login-form {
+    @include flex(start, center, column);
+    
+    margin-top: 162px;
+    width: 100%;
+    padding: 21px;
+    background-color: var(--color-white);
+    border-radius: 12px;
+    border-bottom: 3px solid var(--color-medium);
+
+  &__title {
+    @include text-large();
+
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+
+  &__input {
+    margin-bottom: 21px;
+  }
+
+  &__btn.button {
+    @include text-regular();
+    
+    height: 48px;
+    max-width: 195px;
+    margin: 0 auto;
+    font-weight: 700;
+    border-radius: 6px;
+  }
+}
 
 .auth-btn {
   @include text-large();

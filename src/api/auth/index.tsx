@@ -1,19 +1,23 @@
+import { api } from "../instance";
+
 export const auth = async ({ initTgData, timezone }: { initTgData: string; timezone: number }) => {
-  const response = await fetch("/api/profile", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
+  const response = await api.post("/profile", {
+    method: "CustomerAPI.login",
+    params: {
+      init_data_telegram: initTgData,
+      timezone,
     },
-    body: JSON.stringify({
-      method: "CustomerAPI.login",
-      params: {
-        init_data_telegram: initTgData,
-        timezone,
-      },
-    }),
   });
 
-  const { data } = await response.json();
-  console.log(data);
-  return data;
+  return response?.data;
+};
+
+export const updateUserNickname = async ({ nickname }: { nickname: string }) => {
+  const response = await api.post("/profile", {
+    method: "CustomerAPI.update_user_nickname",
+    params: {
+      nickname,
+    },
+  });
+  return response?.data;
 };

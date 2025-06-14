@@ -3,14 +3,20 @@ import Konek from "/home-page/konek-tap.png";
 import "./index.scss";
 import { useHero } from "../../context/HeroContext";
 import MoneyIcon from "/common/money-icon.png";
-import { useRef, type MouseEvent } from "react";
+import { useEffect, useRef, type MouseEvent } from "react";
 import { useTelegram } from "../../hooks/useTelegram";
+import { socketInit } from "../../socket";
+import { useHeroStore } from "../../store/hero";
+// import { socket } from "../../socket";
 
 interface Props {
   onTap: () => void;
 }
 
 const Hero = ({ onTap }: Props) => {
+  const socket = socketInit();
+  const { setData } = useHeroStore();
+
   const { webApp } = useTelegram();
   const { hero } = useHero();
   const isTappedRef = useRef(false);
@@ -43,7 +49,6 @@ const Hero = ({ onTap }: Props) => {
 
     moneyElement.style.left = `${clientX}px`;
     moneyElement.style.top = `${clientY}px`;
-    console.log(clientX, clientY);
 
     moneyElement.append(moneyIcon, moneyCount);
     document.body.appendChild(moneyElement);
@@ -54,11 +59,48 @@ const Hero = ({ onTap }: Props) => {
 
     setTimeout(() => moneyElement.remove(), 1500);
     onTap();
+
+    const timestamp = Date.now();
+    const socketData = [1, clientX.toFixed(3), clientY.toFixed(3), timestamp, 1];
+    socket.send(JSON.stringify(socketData));
+
+    if (socket.readyState === WebSocket.CLOSED) {
+      socketInit();
+    }
   };
 
   const handlePointerUp = () => {
     isTappedRef.current = false;
   };
+
+  useEffect(() => {
+    console.log("Socket is connecting");
+    console.log(socket)
+    socket.onopen = () => {
+      console.log("Socket is connected");
+    };
+
+    socket.onerror = (error) => {
+      console.log(error);
+    };
+
+    socket.onmessage = (message) => {
+      console.log(message.data);
+      const data = JSON.parse(message.data);
+      setData(data);
+    };
+
+    socket.onclose = () => {
+      console.log("Socket is closed");
+    };
+
+    return () => {
+      socket.onopen = null;
+      socket.onerror = null;
+      socket.onmessage = null;
+      socket.onclose = null;
+    };
+  }, []);
 
   return (
     <div className="hero">
@@ -74,7 +116,6 @@ const Hero = ({ onTap }: Props) => {
 };
 
 export default Hero;
-
 
 //timestep - текущее время игрока
 //tap_multiple - скок прибавится монеток за клик

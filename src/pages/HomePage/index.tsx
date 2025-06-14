@@ -12,6 +12,7 @@ import RegistrationForm from "../../components/RegistrationForm";
 import Modal from "../../components/Modal";
 import { useRegister } from "../../context/RegistContext";
 import ErrorBlock from "../../components/ErrorBlock";
+import { useHeroStore } from "../../store/hero";
 
 const NoticeBlock = ({
   setIsShowRegistration,
@@ -50,9 +51,11 @@ const HomePage = () => {
   const [tabCount, setTabCount] = useState(0);
   const maxValue = 100;
   const [isShowRegistration, setIsShowRegistration] = useState(false);
-  const [isShowNotice, setIsShowNotice] = useState(false);
+  const [_, setIsShowNotice] = useState(false);
   const [showError, setShowError] = useState(false);
+
   const { isRegistered } = useRegister();
+  const { energy, maxEnergy } = useHeroStore();
 
   useEffect(() => {
     if (tabCount % 5 === 0 && !!tabCount && isRegistered === "unregistered") {
@@ -71,7 +74,7 @@ const HomePage = () => {
     <div className="tap-screen">
       <div className="tap-screen__container container">
         <PointsElements />
-        <ProgressBar tabCount={tabCount} maxValue={maxValue} />
+        <ProgressBar  maxValue={maxValue} />
         <div className="tap-screen__content">
           <Hero onTap={onTap} />
           <div className="tap-screen__bottom-content">
@@ -79,7 +82,7 @@ const HomePage = () => {
               <img src={EnergyIcon} alt="energy" onClick={() => setShowError(true)} />
               <div className="tap-screen__energy">
                 <span className="tap-screen__title">Энергия</span>
-                <span className="tap-screen__energy-count">7600/8000</span>
+                <span className="tap-screen__energy-count">{energy}/{maxEnergy}</span>
               </div>
             </div>
             <div className="tap-screen__logo">
@@ -88,7 +91,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      {isShowNotice && <NoticeBlock setIsShowRegistration={setIsShowRegistration} setIsShowNotice={setIsShowNotice} />}
+      {false && <NoticeBlock setIsShowRegistration={setIsShowRegistration} setIsShowNotice={setIsShowNotice} />}
       {isShowRegistration && (
         <Modal isModalOpen={isShowRegistration} onClose={() => setIsShowRegistration(false)}>
           <RegistrationForm onSubmit={() => console.log(123)} />

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 //@ts-nocheck
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoadingScreen from "../../components/LoadingScreen";
 import { useTelegram } from "../../hooks/useTelegram";
 import Logo from "/common/logo.png";
@@ -10,61 +10,65 @@ import Button from "../../components/ui/Button";
 import clsx from "clsx";
 import HeroesCheck from "../../components/HeroesCheck";
 import RegistrationForm from "../../components/RegistrationForm";
-import { useRegister } from "../../context/RegistContext";
-import { auth } from "../../api/auth";
+
+import { getHeroMaxStats } from "../../api/hero";
+import { Input } from "../../components/ui/Input";
+import { useAuthStore } from "../../store/auth";
 
 enum PageContent {
-  AuthButtons = 1,
+  LoginForm = 1,
   HeroCheck = 2,
   Registration = 3,
 }
 
+const LoginForm = () => {
+  const { webApp } = useTelegram();
+  const { auth, updateUserNickname } = useAuthStore();
+  const [nickname, setNickname] = useState("");
+
+  const handleAuth = async () => {
+    if (!nickname) return;
+
+    const timezone = -new Date().getTimezoneOffset() / 60;
+
+    await Promise.all([auth({ initTgData: webApp?.initData, timezone }), updateUserNickname({ nickname })]);
+  };
+
+  return (
+    <form className="login-form" onSubmit={(e) => e.preventDefault()}>
+      <h1 className="login-form__title">Введите свой ник</h1>
+      <Input
+        value={nickname}
+        onChange={(e) => setNickname(e.target.value)}
+        className="login-form__input"
+        placeholder="Ник"
+      />
+      <Button className="login-form__btn" onClick={handleAuth} variant="orange" disabled={!nickname}>
+        Войти
+      </Button>
+    </form>
+  );
+};
+
 const AuthPage = () => {
-  const { isLoading, webApp } = useTelegram();
-  const { setIsRegistered } = useRegister();
-  const [step, setStep] = useState(PageContent.AuthButtons);
+  const { isLoading } = useTelegram();
+  const [step, setStep] = useState(PageContent.LoginForm);
+
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     setStep(PageContent.HeroCheck);
     console.log(data);
   };
+
+  useEffect(() => {
+    const getData = async () => {
+      await getHeroMaxStats();
+    };
+    getData();
+  }, []);
+
   if (isLoading) {
     return <LoadingScreen />;
   }
-
-  const handleAuth = async () => {
-    const timezone = -new Date().getTimezoneOffset() / 60;
-
-    await auth({ initTgData: webApp?.initData, timezone });
-  };
-
-  const AuthButtons = () => {
-    return (
-      <div className="auth-page__auth-btns">
-        <Button className="auth-btn" onClick={handleAuth}>
-          Зарегистрироваться
-        </Button>
-        <Button
-          className="auth-btn"
-          onClick={() => {
-            setStep(PageContent.HeroCheck);
-            setIsRegistered("unregistered");
-          }}
-        >
-          Начать без регистрации
-        </Button>
-        {/* <Button
-          className="auth-btn"
-          onClick={async () => {
-            webApp.requestContact((data) => {
-              console.log("Contact requested", data);
-            });
-          }}
-        >
-          Получить контакты
-        </Button> */}
-      </div>
-    );
-  };
 
   return (
     <div className="auth-page">
@@ -78,7 +82,7 @@ const AuthPage = () => {
               src={Logo}
             />
           </div>
-          {step === PageContent.AuthButtons && <AuthButtons />}
+          {step === PageContent.LoginForm && <LoginForm />}
           {step === PageContent.HeroCheck && <HeroesCheck />}
           {step === PageContent.Registration && <RegistrationForm onSubmit={onSubmit} />}
         </div>

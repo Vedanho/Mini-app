@@ -2,9 +2,12 @@ import ProgressBarWrapper from "/home-page/progress-bar-wrapper.png";
 import Progress from "/home-page/progress.png";
 import BarIcon from "/common/money-icon.png";
 import "./index.scss";
+import { useHeroStore } from "../../store/hero";
 
-const ProgressBar = ({ tabCount, maxValue }: { tabCount: number; maxValue: number }) => {
-  const progress = (tabCount / maxValue) * 100;
+const ProgressBar = ({ maxValue }: { maxValue: number }) => {
+  const { tapCoin } = useHeroStore();
+  const progress = (tapCoin / maxValue) * 100;
+
   return (
     <div className="progress-bar">
       <img src={ProgressBarWrapper} alt="bar-wrapper" className="progress-bar__wrapper" />
@@ -16,7 +19,7 @@ const ProgressBar = ({ tabCount, maxValue }: { tabCount: number; maxValue: numbe
         className="progress-bar__progress"
       />
       <span className="progress-bar__points">
-        {tabCount}/ {maxValue}
+        {tapCoin}/ {maxValue}
       </span>
     </div>
   );
