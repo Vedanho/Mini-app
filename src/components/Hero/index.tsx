@@ -9,13 +9,14 @@ import { socketInit } from "../../socket";
 import { useHeroStore } from "../../store/hero";
 // import { socket } from "../../socket";
 
-interface Props {
-  onTap: () => void;
-}
-
-const Hero = ({ onTap }: Props) => {
+const Hero = () => {
   const socket = socketInit();
-  const { setData } = useHeroStore();
+  const {
+    setData,
+    getMaxStats,
+    tapCoin,
+    maxStats: { maxTapCoin },
+  } = useHeroStore();
 
   const { webApp } = useTelegram();
   const { hero } = useHero();
@@ -58,15 +59,16 @@ const Hero = ({ onTap }: Props) => {
     });
 
     setTimeout(() => moneyElement.remove(), 1500);
-    onTap();
+
+    if (maxTapCoin === tapCoin) return;
 
     const timestamp = Date.now();
     const socketData = [1, clientX.toFixed(3), clientY.toFixed(3), timestamp, 1];
     socket.send(JSON.stringify(socketData));
 
-    if (socket.readyState === WebSocket.CLOSED) {
-      socketInit();
-    }
+    // if (socket.readyState === WebSocket.CLOSED) {
+    //   socketInit();
+    // }
   };
 
   const handlePointerUp = () => {
@@ -74,8 +76,9 @@ const Hero = ({ onTap }: Props) => {
   };
 
   useEffect(() => {
+    getMaxStats();
     console.log("Socket is connecting");
-    console.log(socket)
+
     socket.onopen = () => {
       console.log("Socket is connected");
     };
@@ -85,7 +88,6 @@ const Hero = ({ onTap }: Props) => {
     };
 
     socket.onmessage = (message) => {
-      console.log(message.data);
       const data = JSON.parse(message.data);
       setData(data);
     };

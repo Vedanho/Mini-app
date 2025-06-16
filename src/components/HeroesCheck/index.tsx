@@ -8,15 +8,15 @@ import { Pages } from "../../pages";
 import { useNavigate } from "react-router";
 import { useTelegram } from "../../hooks/useTelegram";
 import type { Heroes } from "../../constants";
-import useBackground from "../../hooks/useBackground";
 import clsx from "clsx";
+import { useHeroStore } from "../../store/hero";
 
 export default function HeroesCheck() {
   const { setHero } = useHero();
+  const { checkHero } = useHeroStore();
   const [activeHero, setActiveHero] = useState<string | null>(null);
   const navigate = useNavigate();
   const { webApp } = useTelegram();
-  const { setBackground } = useBackground();
   const heroes: { name: string; img: string }[] = [
     {
       name: "zarya",
@@ -28,10 +28,10 @@ export default function HeroesCheck() {
     },
   ];
 
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
+    await checkHero({ heroId: activeHero });
     setHero(activeHero as Heroes);
     navigate(Pages.main);
-    setBackground(activeHero as Heroes);
   };
 
   const handleCheckHero = (hero: { name: string; img: string }) => {

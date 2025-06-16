@@ -11,9 +11,9 @@ import clsx from "clsx";
 import HeroesCheck from "../../components/HeroesCheck";
 import RegistrationForm from "../../components/RegistrationForm";
 
-import { getHeroMaxStats } from "../../api/hero";
 import { Input } from "../../components/ui/Input";
-import { useAuthStore } from "../../store/auth";
+import { useProfileStore } from "../../store/profile";
+import { useNavigate } from "react-router";
 
 enum PageContent {
   LoginForm = 1,
@@ -21,17 +21,22 @@ enum PageContent {
   Registration = 3,
 }
 
-const LoginForm = () => {
+const LoginForm = ({ setStep }: { setStep: () => void }) => {
   const { webApp } = useTelegram();
-  const { auth, updateUserNickname } = useAuthStore();
+  const { isAuth, auth, updateUserNickname } = useProfileStore();
   const [nickname, setNickname] = useState("");
+  const navigate = useNavigate();
 
   const handleAuth = async () => {
     if (!nickname) return;
 
-    const timezone = -new Date().getTimezoneOffset() / 60;
-
-    await Promise.all([auth({ initTgData: webApp?.initData, timezone }), updateUserNickname({ nickname })]);
+    try {
+      await Promise.all([auth({ initTgData: webApp?.initData })]);
+      console.log(2)
+      setStep(PageContent.HeroCheck);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -56,15 +61,7 @@ const AuthPage = () => {
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     setStep(PageContent.HeroCheck);
-    console.log(data);
   };
-
-  useEffect(() => {
-    const getData = async () => {
-      await getHeroMaxStats();
-    };
-    getData();
-  }, []);
 
   if (isLoading) {
     return <LoadingScreen />;
@@ -82,7 +79,7 @@ const AuthPage = () => {
               src={Logo}
             />
           </div>
-          {step === PageContent.LoginForm && <LoginForm />}
+          {step === PageContent.LoginForm && <LoginForm setStep={setStep} />}
           {step === PageContent.HeroCheck && <HeroesCheck />}
           {step === PageContent.Registration && <RegistrationForm onSubmit={onSubmit} />}
         </div>

@@ -1,19 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useHeroStore } from "../store/hero";
 
 const useBackground = () => {
-  const [background, setBackground] = useState<null | string>(null);
-
+  const { currentHero } = useHeroStore();
+  
   useEffect(() => {
     const body = document.querySelector("body");
 
-    if (background) {
+    if (currentHero) {
       body?.classList.add("background-image")
-      body!.id = background
+      body!.id = currentHero
     }
-  }, [background])
-
-
-  return { background, setBackground };
+  }, [currentHero])
 };
 
 export default useBackground;

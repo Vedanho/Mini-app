@@ -20,10 +20,10 @@ type TelegramTheme = {
   section_separator_color: string;
   subtitle_text_color: string;
   destructive_text_color: string;
- };
- 
- 
- export type WebAppUser = {
+};
+
+
+export type WebAppUser = {
   id: number;
   is_bot: boolean;
   first_name: string;
@@ -31,23 +31,23 @@ type TelegramTheme = {
   username: string;
   is_premium: boolean;
   photo_url: string;
- };
- 
- 
- type WebappData = {
+};
+
+
+type WebappData = {
   user: WebAppUser;
- };
- 
- 
- type TelegramHapticFeedback = {
+};
+
+
+type TelegramHapticFeedback = {
   impactOccurred: (
     style: "light" | "medium" | "rigid" | "heavy" | "soft",
   ) => void;
   notificationOccurred: (type: "error" | "success" | "warning") => void;
   selectionChanged: () => void;
- };
- 
- 
+};
+
+
 export type TelegramWebapp = {
   initData: string;
   initDataUnsafe: WebappData;
@@ -60,5 +60,16 @@ export type TelegramWebapp = {
   close: () => void;
   ready: () => void;
   HapticFeedback: TelegramHapticFeedback;
- };
- 
+};
+
+export interface Profile {
+  first_name: string,
+  last_name: string,
+  surname: string,
+  username: string,
+  mail: string,
+  phone: string,
+  birth_date: string,
+  loyalty_enabled: boolean | null,
+  subscriptions: boolean | null,
+}

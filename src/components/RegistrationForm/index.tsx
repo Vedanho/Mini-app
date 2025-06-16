@@ -1,6 +1,6 @@
 import { Controller, useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { Input } from "../ui/Input";
-import Checkbox from "../../components/ui/Checkbox";
+import Checkbox from "../ui/Checkbox";
 import Button from "../ui/Button";
 import "./index.scss";
 
